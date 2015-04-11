@@ -1,35 +1,36 @@
 @(message: String)
 
 @navbar = {
-	<div class="row border-bottom white-bg" ng-controller="NavbarCtrl">
+	<div class="row border-bottom white-bg">
 	  <nav class="navbar navbar-static-top" role="navigation">
 	    <div class="navbar-header">
 	      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
 	              class="navbar-toggle collapsed" type="button">
 	        <i class="fa fa-reorder"></i>
 	      </button>
-	      <a href="#" id="logo" class="navbar-brand"><img alt="" title="" src="#"/></a>
+	      <a href="#" id="logo" class="navbar-brand"><!--img alt="" title="" src="#"/-->Société</a>
 	    </div>
 	    <div class="navbar-collapse collapse" id="navbar" nav-collapse>
 	      <ul class="nav navbar-nav">
 	        <li>
-	          <a aria-expanded="false" role="button" ui-sref="app.store"><i class="fa fa-home imenu"></i> Restaurant</a>
+	          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Restaurant</a>
 	        </li>
 	        <li>
-	          <a aria-expanded="false" role="button" ui-sref="app.employees"><i class="fa fa-users imenu"></i> Fournisseurs</a>
+	          <a aria-expanded="false" role="button" href="#"><i class="fa fa-users imenu"></i> Fournisseurs</a>
+	        </li>
+	        <li>
+	          <a href="#" aria-expanded="false" role="button"><i class="fa fa-users imenu"></i> Produits</a>
 	        </li>
 	        <li class="dropdown">
 	          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Commandes<span
 	            class="caret"></span></a>
 	          <ul role="menu" class="dropdown-menu">
-	            <li><a ui-sref="app.deals.current">Commandes à traiter</a></li>
-	            <li><a ui-sref="app.deals.planned">Commandes en cours</a></li>
-	            <li><a ui-sref="app.deals.previous">Commandes traitées</a></li>
+	            <li><a href="#">Commandes à traiter</a></li>
+	            <li><a href="#">Commandes en cours</a></li>
+	            <li><a href="#">Commandes traitées</a></li>
 	          </ul>
 	        </li>
-	        <li>
-	          <a aria-expanded="false" role="button" ui-sref="app.employees"><i class="fa fa-users imenu"></i> Produits</a>
-	        </li>
+	        
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        <li class="dropdown">
@@ -53,5 +54,43 @@
 
 @main("Project champagne")(navbar) {
 	
+    <div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Stocks</h3>
+		      </div>
+		      <div class="ibox-content">
+		        <div class="table-responsive">
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Produit</th>
+		              <th>Prix</th>
+		              <th>Quantité</th>
+		              <th>Prix Total</th>
+		              <th>Date</th>
+		            </tr>
+		            </thead>
+		            <tbody>
+			            <tr>
+			              <td>{{order.deal.name}}</td>
+			              <td>{{(1 - order.deal.discount) * order.deal.price}}</td>
+			              <td>{{ order.quantity }}</td>
+			              <td>{{ ((1 - order.deal.discount) * order.deal.price) * order.quantity }}</td>
+			              <td>{{ order.validatedAt | date:"dd MMMM 'at' h:mma"}}</td>
+			            </tr>
+		            </tbody>
+		          </table>
+		        </div>
+		
+		      </div>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
 
 }
