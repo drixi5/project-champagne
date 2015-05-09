@@ -32,7 +32,8 @@ POST    /reset/:token               controllers.account.Reset.runReset(token:Str
 
 GET     /email/:token               controllers.account.settings.Email.validateEmail(token:String)
 
-#
+# Stores
+GET     /store                  	controllers.Store.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
