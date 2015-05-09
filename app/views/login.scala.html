@@ -1,0 +1,51 @@
+@(loginForm: Form[Application.Login])
+
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+<div class="loginColumns animated fadeInDown">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox-title pink">
+		<h1>@Messages("Connexion")</h1>
+	  </div>
+
+	  <div class="ibox-content">
+		@form(routes.Application.authenticate(), 'class -> "form") {
+		
+		    @if(loginForm.hasGlobalErrors) {
+		        <p class="error">
+		            <span class="label label-danger">@loginForm.globalError.message</span>
+		        </p>
+		    }
+		
+		    <fieldset>
+		        @inputText(
+		            loginForm("email"),
+		            'placeholder -> Messages("email"),
+		            '_label -> null,
+		            '_help -> Messages("signin.your.email"),
+		            'class -> "form-control input-lg"
+		        )
+		        @inputPassword(
+		            loginForm("password"),
+		            '_label -> null,
+		            'placeholder -> Messages("password"),
+		            '_help -> Messages("signin.your.password"),
+		            'class -> "form-control input-lg"
+		        )
+		    </fieldset>
+		
+		    <div class="form-actions">
+		        <div class="form-group submit">
+            		<button type="submit" class="btn btn-primary block full-width m-b"><i class="fa fa-sign-in"></i> Se connecter
+          			</button>
+          		</div>
+		        <a class="pass-forgot" href="@controllers.account.routes.Reset.ask">
+            		<small>Mot de passe oublie?</small>
+          		</a>
+		    </div>
+		  </div>
+	</div>
+</div>
+}
