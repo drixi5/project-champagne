@@ -1,136 +1,23 @@
-@(message: String)
+@(signupForm: Form[Application.Register], loginForm: Form[Application.Login])
 
-@navbar = {
-	<div class="row border-bottom white-bg">
-	  <nav class="navbar navbar-static-top" role="navigation">
-	    <div class="navbar-header">
-	      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
-	              class="navbar-toggle collapsed" type="button">
-	        <i class="fa fa-reorder"></i>
-	      </button>
-	      <a href="#" id="logo" class="navbar-brand"><!--img alt="" title="" src="#"/-->Société</a>
-	    </div>
-	    <div class="navbar-collapse collapse" id="navbar" nav-collapse>
-	      <ul class="nav navbar-nav">
-	        <li>
-	          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Restaurant</a>
-	        </li>
-	        <li>
-	          <a aria-expanded="false" role="button" href="#"><i class="fa fa-users imenu"></i> Fournisseurs</a>
-	        </li>
-	        <li>
-	          <a href="#" aria-expanded="false" role="button"><i class="fa fa-users imenu"></i> Produits</a>
-	        </li>
-	        <li class="dropdown">
-	          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Commandes<span
-	            class="caret"></span></a>
-	          <ul role="menu" class="dropdown-menu">
-	            <li><a href="#">Commandes à traiter</a></li>
-	            <li><a href="#">Commandes en cours</a></li>
-	            <li><a href="#">Commandes traitées</a></li>
-	          </ul>
-	        </li>
-	        
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li class="dropdown">
-	          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown">
-	            Prénom Nom <span class="caret"></span>
-	          </a>
-	          <ul role="menu" class="dropdown-menu">
-	            <li><a href="#"><i class="fa fa-user"></i> Profil</a></li>
-	            <li>
-	              <a href="#">
-	                <i class="fa fa-sign-out"></i> Se déconnecter
-	              </a>
-	            </li>
-	          </ul>
-	        </li>
-	      </ul>
-	    </div>
-	  </nav>
-	</div>
-	
-	
-	<div class="wrapper wrapper-content">
-      <div class="container">
-        <div class="row">
-		  <div class="col-lg-12">
-		    <div class="ibox float-e-margins">
-		      <div class="ibox-title">
-		        <h3>Stocks</h3>
-		      </div>
-		      <div class="ibox-content">
-		        <div class="table-responsive">
-		          <table class="table table-striped">
-		            <thead>
-		            <tr>
-		              <th>Produit</th>
-		              <th>Prix</th>
-		              <th>Quantité</th>
-		              <th>Prix Total</th>
-		              <th>Date</th>
-		            </tr>
-		            </thead>
-		            <tbody>
-			            <tr>
-			              <td>{{order.deal.name}}</td>
-			              <td>{{(1 - order.deal.discount) * order.deal.price}}</td>
-			              <td>{{ order.quantity }}</td>
-			              <td>{{ ((1 - order.deal.discount) * order.deal.price) * order.quantity }}</td>
-			              <td>{{ order.validatedAt | date:"dd MMMM 'at' h:mma"}}</td>
-			            </tr>
-		            </tbody>
-		          </table>
-		        </div>
-		
-		      </div>
-		    </div>
-		  </div>
-		</div>
-      </div>
-    </div>
+@scripts = {
+    <script src="@routes.Assets.at("javascripts/password.js")" type="text/javascript"></script>
 }
 
-@main("Project champagne")(navbar) {
-	
-    <div class="wrapper wrapper-content">
-      <div class="container">
-        <div class="row">
-		  <div class="col-lg-12">
-		    <div class="ibox float-e-margins">
-		      <div class="ibox-title">
-		        <h3>Stocks</h3>
-		      </div>
-		      <div class="ibox-content">
-		        <div class="table-responsive">
-		          <table class="table table-striped">
-		            <thead>
-		            <tr>
-		              <th>Produit</th>
-		              <th>Prix</th>
-		              <th>Quantité</th>
-		              <th>Prix Total</th>
-		              <th>Date</th>
-		            </tr>
-		            </thead>
-		            <tbody>
-			            <tr>
-			              <td>{{order.deal.name}}</td>
-			              <td>{{(1 - order.deal.discount) * order.deal.price}}</td>
-			              <td>{{ order.quantity }}</td>
-			              <td>{{ ((1 - order.deal.discount) * order.deal.price) * order.quantity }}</td>
-			              <td>{{ order.validatedAt | date:"dd MMMM 'at' h:mma"}}</td>
-			            </tr>
-		            </tbody>
-		          </table>
-		        </div>
-		
-		      </div>
-		    </div>
-		  </div>
-		</div>
-      </div>
+@main(null, scripts) {
+
+  @wflash()
+  <div class="col-lg-6">
+      Sed (saepe enim redeo ad Scipionem, cuius omnis sermo erat de amicitia) querebatur, quod omnibus in rebus homines diligentiores essent; capras et oves quot quisque haberet, dicere posse, amicos quot haberet, non posse dicere et in illis quidem parandis adhibere curam, in amicis eligendis neglegentis esse nec habere quasi signa quaedam et notas, quibus eos qui ad amicitias essent idonei, iudicarent. Sunt igitur firmi et stabiles et constantes eligendi; cuius generis est magna penuria. Et iudicare difficile est sane nisi expertum; experiendum autem est in ipsa amicitia. Ita praecurrit amicitia iudicium tollitque experiendi potestatem.
+  </div>
+
+  <div class="col-lg-6">
+    <div class="well">
+      @login(loginForm)
     </div>
 
+    <div class="well">
+      @account.signup.createFormOnly(signupForm)
+    </div>
+  </div>
 }
