@@ -5,33 +5,46 @@
         FieldConstructor(twitterBootstrapInput.render)
     }
 
-<h3>@Messages("signup.new")</h3>
+<div class="loginColumns animated fadeInDown">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox-title">
+		<h3>@Messages("signup.new")</h3>
+	  </div>
 
-@form(controllers.account.routes.Signup.save()) {
-
-    <fieldset>
-        @inputText(
-            signupForm("email"),
-            'placeholder -> Messages("email"),
-            '_label -> null,
-            'class -> "form-control"
-        )
-        @inputText(
-            signupForm("fullname"),
-            'placeholder -> Messages("fullname"),
-            '_label -> null,
-            'class -> "form-control"
-        )
-        @inputPassword(
-            signupForm("inputPassword"),
-            '_label -> null,
-            'placeholder -> Messages("password"),
-            'class -> "form-control"
-        )
-    </fieldset>
-
-    <div class="form-actions">
-        <input type="submit" class="btn btn-primary" value="@Messages("signup.signup")">
-    </div>
+	  <div class="ibox-content">
+		@form(controllers.account.routes.Signup.save()) {
+		
+		    <fieldset>
+		        @inputText(
+		            signupForm("email"),
+		            'placeholder -> Messages("email"),
+		            '_label -> null,
+		            'class -> "form-control"
+		        )
+		        @inputText(
+		            signupForm("fullname"),
+		            'placeholder -> Messages("fullname"),
+		            '_label -> null,
+		            'class -> "form-control"
+		        )
+		        @inputPassword(
+		            signupForm("inputPassword"),
+		            '_label -> null,
+		            'placeholder -> Messages("password"),
+		            'class -> "form-control"
+		        )
+		    </fieldset>
+		
+		    <div class="form-actions">
+		        <div class="form-group submit">
+            		<button type="submit" class="btn btn-primary block full-width m-b"><i class="fa fa-sign-in"></i> S'inscrire
+          			</button>
+          		</div>
+		    </div>
+		</div>
+	  </div>
+	</div>
+</div>
 }
 

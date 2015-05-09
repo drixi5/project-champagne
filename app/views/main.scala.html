@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>@Messages("title")</title>
+        <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
@@ -12,25 +13,12 @@
         <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/font-awesome.min.css")">
         @scripts
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
     </head>
-    <body>
-
-        <div ng-controller="MenuCtrl" class="navbar navbar-inverse navbar-default" role="navigation">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-bars fa-lg fa-inverse"></span>
-                </button>
-                <a class="navbar-brand" href="@routes.Application.index()">
-                    <i class="fa fa-rocket"></i> Project name
-                </a>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="@routes.Application.index()">Home</a></li>
-                </ul>
-            </div>
-            @logged(user)
-        </div>
+    <body class="gray-bg top-navigation">
+    
+    	@logged(user)
+        
 
         <div class="container">
             <div class="row">
@@ -42,8 +30,7 @@
         <div class="footer text-center">
             <div>
                 <small>
-                    Hello! I'm your friendly footer. If you're actually reading this, I'm impressed....
-                    <a href="https://github.com/yesnault/PlayStartApp">Fork me on Github</a> <i class="fa fa-github fa-1"></i> <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a>
+                    <i class="fa fa-github fa-1"></i> <a href="https://github.com/drixi5/project-champagne/">Fork me on Github</a>
                 </small>
             </div>
         </div>

@@ -18,3 +18,5 @@ libraryDependencies ++= Seq(
   cache,
   javaWs
 )
+
+scalacOptions ++= Seq("-encoding", "UTF-8")
