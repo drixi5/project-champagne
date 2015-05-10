@@ -35,5 +35,16 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 # Stores
 GET     /store                  	controllers.Store.index()
 
+# Supplier
+GET     /supplier                  	controllers.Supplier.index()
+
+# Orders
+GET     /ordersProgress             controllers.OrderInProgress.index()
+GET     /ordersValid                controllers.OrderValid.index()
+GET     /ordersHandle               controllers.OrderToHandle.index()
+
+# Product
+GET     /product                  	controllers.Product.index()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
