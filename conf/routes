@@ -46,7 +46,7 @@ GET     /ordersHandle               controllers.OrderToHandle.index()
 # Product
 GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
-#GET     /product/addOtherProduct 	controllers.Product.addOtherProduct()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
