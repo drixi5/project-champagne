@@ -37,6 +37,7 @@ GET     /store                  	controllers.Store.index()
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
+GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
 
 # Orders
 GET     /ordersProgress             controllers.OrderInProgress.index()

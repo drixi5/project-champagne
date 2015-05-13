@@ -1,68 +1,62 @@
-@(user: User)
-
-@main(user) {
+@(user: User) @main(user) {
 
 <div class="wrapper wrapper-content">
-      <div class="container">
-        <div class="row">
-		  <div class="col-lg-12">
-		    <div class="ibox float-e-margins">
-		      <div class="ibox-title">
-		        <h3>Création d'un produit</h3>
-		      </div>
-				
-			  <div class="ibox-content">
-				<form method ="post" >
-					<div class="form-group">
-						<label class="col-lg-3">Nom-Espèce: </label>
-						<input type="text" class="form-control col-lg-9" name="name" /><br/>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h3>Création d'un produit</h3>
 					</div>
-					<label class="" >Type : </label> 
-					<select class="form-control">
-						<option>Fruit</option>
-					    <option>Légume</option>
-					    <option>Féculent</option>
-					</select><br/>
-					
-					<div class="button text-center">
-						<button type="button" class="btn btn-primary btn-lg active">Continuer</button>
-						<button type="button" class="btn btn-primary btn-lg active">Valider</button>
+
+					<div class="ibox-content">
+						<form method="post">
+							<div class="form-group">
+								<label class="col-lg-3">Nom-Espèce: </label> <input type="text"
+									class="form-control col-lg-9" name="name" /><br />
+							</div>
+							<label class="">Type : </label> <select class="form-control">
+								<option>Fruit</option>
+								<option>Légume</option>
+								<option>Féculent</option>
+							</select><br />
+
+							<div class="button text-center">
+								<button type="button" class="btn btn-primary btn-lg active">Continuer</button>
+								<button type="button" class="btn btn-primary btn-lg active">Valider</button>
+							</div>
+						</form>
+						<h3>Produits</h3>
+
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Nom - Espece</th>
+										<th>Type</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Courgette</td>
+										<td>Legumes</td>
+										<td>
+											<button class="btn btn-custom btn-s" title="Modifier">
+												<i class="fa fa-cog"></i>
+											</button>
+											<button class="btn btn-custom btn-s" title="Supprimer">
+												<i class="fa fa-trash-o"></i>
+											</button>
+										</td>
+									</tr>
+								</tbody>
+						</div>
 					</div>
-				</form>
-
-
-		    
-	
-		        <h3>Produits</h3>
-		      
-		        <div class="table-responsive">
-		          <table class="table table-striped">
-		            <thead>
-		            <tr>
-		              <th>Nom - Espece</th>
-		              <th>Type</th>
-		              <th></th>
-		            </tr>
-		            </thead>
-		            <tbody>
-			            <tr>
-			              <td>Courgette</td>
-			              <td>Legumes</td>
-			              <td>
-			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
-                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
-                    	  </td>
-			            </tr>
-		            </tbody>
-		          </table>
-		        </div>
-		
-		      </div>
-		    </div>
-		  </div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-		  
 
-}
+
+	}
