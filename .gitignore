@@ -22,3 +22,6 @@ server.pid
 /dist/
 .cache
 .DS_Store
+/.DS_Store
+conf/evolutions/
+conf/application.conf

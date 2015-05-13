@@ -3,6 +3,20 @@
 
 # --- !Ups
 
+create table stock (
+  stock_id                  bigint auto_increment not null,
+  entity_id                 bigint,
+  name                      varchar(255),
+  type                      varchar(255),
+  unit                      varchar(255),
+  quantity                  integer,
+  threshold_max             integer,
+  threshold_min             integer,
+  date_creation             datetime,
+  constraint uq_stock_name unique (name),
+  constraint pk_stock primary key (stock_id))
+;
+
 create table token (
   token                     varchar(255) not null,
   user_id                   bigint,
@@ -32,6 +46,8 @@ create table user (
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table stock;
 
 drop table token;
 

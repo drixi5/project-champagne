@@ -2,6 +2,7 @@ package models.utils;
 
 //import com.typesafe.plugin.MailerAPI;
 import play.libs.mailer.MailerPlugin;
+import play.libs.mailer.Email;
 import play.api.libs.mailer.*;
 import play.Configuration;
 import play.Logger;
@@ -75,7 +76,7 @@ public class Mail {
         }
 
         public void run() {
-            /*Email email = play.Play.application().plugin(MailerPlugin.class).Email();
+            /*Email email = play.Play.application().plugin(Email.class).Email();
 
             final Configuration root = Configuration.root();
             final String mailFrom = root.getString("mail.from");
