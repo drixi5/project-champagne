@@ -8,22 +8,26 @@
 					<div class="ibox-title">
 						<h3>Création d'un produit</h3>
 					</div>
-
+					
+					<script type= 'text/javascript' scr = '@routes.Assets.at("js/table.js")'></script>
+					
+					<ul id="products"></ul>
+					
 					<div class="ibox-content">
-						<form method="post">
+						<form method="post" action="@routes.Product.saveProduct()">
 							<div class="form-group">
 								<label class="col-lg-3">Nom-Espèce: </label> <input type="text"
 									class="form-control col-lg-9" name="name" /><br />
 							</div>
 							<label class="">Type : </label> <select class="form-control">
-								<option>Fruit</option>
-								<option>Légume</option>
-								<option>Féculent</option>
+								<option type="name"> Fruit</option>
+								<option type="name">Légume</option>
+								<option type="name">Féculent</option>
 							</select><br />
 
 							<div class="button text-center">
 								<button type="button" class="btn btn-primary btn-lg active">Continuer</button>
-								<button type="button" class="btn btn-primary btn-lg active">Valider</button>
+								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 						</form>
 						<h3>Produits</h3>
@@ -50,8 +54,8 @@
 											</button>
 										</td>
 									</tr>
-								</tbody>
-						</div>
+									</div>
+								</tbody>	
 					</div>
 				</div>
 			</div>

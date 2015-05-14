@@ -3,12 +3,11 @@
 
 # --- !Ups
 
-create table product (
+create table model_product (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   type                      varchar(255),
-  constraint uq_product_name unique (name),
-  constraint pk_product primary key (id))
+  constraint pk_model_product primary key (id))
 ;
 
 create table token (
@@ -41,7 +40,7 @@ create table user (
 
 SET FOREIGN_KEY_CHECKS=0;
 
-drop table product;
+drop table model_product;
 
 drop table token;
 
