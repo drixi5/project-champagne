@@ -1,6 +1,7 @@
 package controllers;
 
 import models.User;
+import models.Stock;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;

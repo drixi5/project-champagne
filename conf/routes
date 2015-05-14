@@ -39,6 +39,7 @@ POST    /store						controllers.Store.addStore()
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
+GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
 
 # Orders
 GET     /ordersProgress             controllers.OrderInProgress.index()
@@ -47,6 +48,8 @@ GET     /ordersHandle               controllers.OrderToHandle.index()
 
 # Product
 GET     /product                  	controllers.Product.index()
+GET     /product/addProduct         controllers.Product.addProduct()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
