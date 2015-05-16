@@ -746,7 +746,7 @@ fieldset[disabled] .btn-link.active {
 }
 .btn-white:active,
 .btn-white.active {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;*/
 }
 .btn-white:active,
 .btn-white.active,
