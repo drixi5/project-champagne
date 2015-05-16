@@ -1,5 +1,8 @@
-@(user: User)
 
+@import helper._
+
+
+@(user: User, form: Form[models.Stores])
 @main(user) {
 
 
@@ -11,22 +14,29 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
-
+@helper.form(action=routes.Store.addStore) {
 <div class="ibox-content">
 
-<form method="post" action="@routes.Store.addStore()" >
+@if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+       Erreur !
+    </p>
+}
 
+
+<fieldset>
 <label class="btn btn-custom btn-s">Nom du restaurant</label> <input type="text" name="name"><br/>
-<label class="btn btn-custom btn-s">Adresse 1</label> <input type="text" name="adresse1"><br/>
-<label class="btn btn-custom btn-s">Adresse 2</label> <input type="text" name="adresse2"><br/>
+<label class="btn btn-custom btn-s">Mail</label> <input type="text" name="email"><br/>
+<label class="btn btn-custom btn-s">Adresse 1</label> <input type="text" name="adress1"><br/>
+<label class="btn btn-custom btn-s">Adresse 2</label> <input type="text" name="adress2"><br/>
 <label class="btn btn-custom btn-s">Code Postal</label> <input type="text" name="codePostal">
-<label class="btn btn-custom btn-s">Ville</label> <input type="text" name="villes">
-
+<label class="btn btn-custom btn-s">Ville</label> <input type="text" name="ville">
+</fieldset>
 <div class="button text-center">
 <button class="btn btn-primary btn-lg active">Continuer</button>
+}
 </div>
-</form>
-	
 </div>
 </div>
 </div>

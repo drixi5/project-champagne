@@ -3,24 +3,6 @@
 
 # --- !Ups
 
-<<<<<<< HEAD
-create table product (
-  id                        bigint auto_increment not null,
-  name                      varchar(255),
-  type                      varchar(255),
-  constraint uq_product_name unique (name),
-  constraint pk_product primary key (id))
-=======
-<<<<<<< HEAD
-create table stores (
-  id                        bigint auto_increment not null,
-  name                      varchar(255),
-  adresse1                  varchar(255),
-  adresse2                  varchar(255),
-  code_postal               integer,
-  ville                     varchar(255),
-  constraint pk_stores primary key (id))
-=======
 create table stock (
   stock_id                  bigint auto_increment not null,
   entity_id                 bigint,
@@ -33,8 +15,17 @@ create table stock (
   date_creation             datetime,
   constraint uq_stock_name unique (name),
   constraint pk_stock primary key (stock_id))
->>>>>>> master
->>>>>>> master
+;
+
+create table stores (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  email                     varchar(255),
+  adress1                   varchar(255),
+  adress2                   varchar(255),
+  code_postal               integer,
+  ville                     varchar(255),
+  constraint pk_stores primary key (id))
 ;
 
 create table token (
@@ -67,15 +58,9 @@ create table user (
 
 SET FOREIGN_KEY_CHECKS=0;
 
-<<<<<<< HEAD
-drop table product;
-=======
-<<<<<<< HEAD
-drop table stores;
-=======
 drop table stock;
->>>>>>> master
->>>>>>> master
+
+drop table stores;
 
 drop table token;
 

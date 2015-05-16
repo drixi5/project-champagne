@@ -37,6 +37,9 @@ GET     /store                  	controllers.Store.index()
 GET     /store/viewAddStore         controllers.Store.viewAddStore()
 POST    /store						controllers.Store.addStore()
 
+#POST    /store/addAdmin			controllers.Store.addStore()
+#POST    /store						controllers.Store.addAdmin()
+
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
 GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
