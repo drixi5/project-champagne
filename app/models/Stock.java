@@ -7,6 +7,7 @@ import play.db.ebean.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import java.util.Date;
 
@@ -16,8 +17,14 @@ public class Stock extends Model {
 	@Id
     public Long stock_id;
 	
-	@Constraints.Required
-    public Long entity_id;
+	//@Constraints.Required
+    //public Long entity_id;
+	
+	@ManyToOne
+    public ModelProduct product ;
+	
+	@ManyToOne
+    public Stores store ;
 
     @Constraints.Required
     @Formats.NonEmpty
@@ -28,7 +35,7 @@ public class Stock extends Model {
     @Formats.NonEmpty
     public String type;
 
-    public String unit;
+   // public String unit; obtenu grace a l'id du product
 
     @Constraints.Required
     @Formats.NonEmpty
@@ -42,7 +49,9 @@ public class Stock extends Model {
     @Formats.NonEmpty
     public int threshold_min;
     
-    @Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
-    public Date dateCreation;
+    //@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
+    //public Date dateCreation;
+    
+    public static Model.Finder<Long, Stock> find = new Model.Finder<>(Long.class,Stock.class);
 
 }
