@@ -14,22 +14,31 @@
 					<ul id="products"></ul>
 					
 					<div class="ibox-content">
-						<form method="post" action="@routes.Product.saveProduct()">
+						<form class="form-horizontal" method="post" action="@routes.Product.saveProduct()">
 							<div class="form-group">
-								<label class="col-lg-3">Nom-Espèce: </label> <input type="text"
-									class="form-control col-lg-9" name="name" /><br />
+							  <label class="col-sm-2 control-label">Nom - Espece</label>
+							  <div class="col-sm-10">
+							    <input class="form-control" type="text" name="name">
+							  </div>
+							</div><br/>
+							<div class="form-group">
+							  <label class="col-sm-2 control-label">Type</label>
+							  <div class="col-sm-10">
+							    <select class="form-control" name="type">
+								  <option value="Fruit"> Fruit</option>
+								  <option value="Legume">Légume</option>
+								  <option value="Feculent">Féculent</option>
+								</select>
+							  </div>
 							</div>
-							<label class="">Type : </label> <select class="form-control">
-								<option type="name"> Fruit</option>
-								<option type="name">Légume</option>
-								<option type="name">Féculent</option>
-							</select><br />
+							<div class="hr-line-dashed"></div>
 
 							<div class="button text-center">
-								<button type="button" class="btn btn-primary btn-lg active">Continuer</button>
+								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 						</form>
+						
 						<h3>Produits</h3>
 
 						<div class="table-responsive">
@@ -55,7 +64,8 @@
 										</td>
 									</tr>
 									</div>
-								</tbody>	
+								</tbody>
+							</table>	
 					</div>
 				</div>
 			</div>
