@@ -54,7 +54,7 @@ public class Stock extends Model {
     //@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
     //public Date dateCreation;
     
-    public static Model.Finder<Long, Stock> find = new Model.Finder<>(Long.class,Stock.class);
+    public static Model.Finder<Long, Stock> find = new Model.Finder<Long, Stock>(Long.class,Stock.class);
     
    
 

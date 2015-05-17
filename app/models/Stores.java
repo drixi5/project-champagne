@@ -115,6 +115,6 @@ public class Stores extends Model {
 }*/
 	
 	
-	public static  Model.Finder<Long, Stores> find = new  Model.Finder<>(Long.class, Stores.class);
+	public static  Model.Finder<Long, Stores> find = new  Model.Finder<Long, Stores>(Long.class, Stores.class);
 
 }
