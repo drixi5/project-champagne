@@ -6,7 +6,6 @@ import play.mvc.Result;
 import play.mvc.Security;
 import views.html.supplier;
 import views.html.addSupplier;
-import models.ModelProduct;
 
 @Security.Authenticated(Secured.class)
 public class Supplier extends Controller {

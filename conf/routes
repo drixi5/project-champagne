@@ -34,6 +34,8 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 
 # Stores
 GET     /store                  	controllers.Store.index()
+GET     /store/viewAddStore         controllers.Store.viewAddStore()
+POST    /store						controllers.Store.addStore()
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()

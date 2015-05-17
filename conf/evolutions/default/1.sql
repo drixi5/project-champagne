@@ -10,6 +10,30 @@ create table model_product (
   constraint pk_model_product primary key (id))
 ;
 
+create table stock (
+  stock_id                  bigint auto_increment not null,
+  entity_id                 bigint,
+  name                      varchar(255),
+  type                      varchar(255),
+  unit                      varchar(255),
+  quantity                  integer,
+  threshold_max             integer,
+  threshold_min             integer,
+  date_creation             datetime,
+  constraint uq_stock_name unique (name),
+  constraint pk_stock primary key (stock_id))
+;
+
+create table stores (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  adresse1                  varchar(255),
+  adresse2                  varchar(255),
+  code_postal               integer,
+  villes                    varchar(255),
+  constraint pk_stores primary key (id))
+;
+
 create table token (
   token                     varchar(255) not null,
   user_id                   bigint,
@@ -41,6 +65,10 @@ create table user (
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table model_product;
+
+drop table stock;
+
+drop table stores;
 
 drop table token;
 
