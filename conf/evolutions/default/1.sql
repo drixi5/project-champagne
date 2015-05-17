@@ -3,6 +3,12 @@
 
 # --- !Ups
 
+create table model_employee (
+  stock_id                  bigint auto_increment not null,
+  entity_id                 bigint,
+  constraint pk_model_employee primary key (stock_id))
+;
+
 create table model_product (
   id                        bigint auto_increment not null,
   name                      varchar(255),
@@ -63,6 +69,8 @@ create table user (
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table model_employee;
 
 drop table model_product;
 
