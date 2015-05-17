@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 import models.utils.AppException;
 import models.utils.Hash;
+
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 

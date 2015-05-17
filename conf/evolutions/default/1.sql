@@ -3,10 +3,23 @@
 
 # --- !Ups
 
+<<<<<<< HEAD
 create table model_product (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   type_product_id           bigint,
+=======
+create table model_employee (
+  stock_id                  bigint auto_increment not null,
+  entity_id                 bigint,
+  constraint pk_model_employee primary key (stock_id))
+;
+
+create table model_product (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  type                      varchar(255),
+>>>>>>> master
   constraint pk_model_product primary key (id))
 ;
 
@@ -23,11 +36,18 @@ create table stock (
 create table stores (
   id                        bigint auto_increment not null,
   name                      varchar(255),
+<<<<<<< HEAD
   email                     varchar(255),
   adress1                   varchar(255),
   adress2                   varchar(255),
   code_postal               integer,
   ville                     varchar(255),
+=======
+  adresse1                  varchar(255),
+  adresse2                  varchar(255),
+  code_postal               integer,
+  villes                    varchar(255),
+>>>>>>> master
   constraint pk_stores primary key (id))
 ;
 
@@ -79,6 +99,11 @@ create index ix_stock_unit_3 on stock (unit_id);
 
 SET FOREIGN_KEY_CHECKS=0;
 
+<<<<<<< HEAD
+=======
+drop table model_employee;
+
+>>>>>>> master
 drop table model_product;
 
 drop table stock;

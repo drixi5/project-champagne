@@ -36,7 +36,7 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 
 # Stores
 GET     /store                  	controllers.Store.index()
-GET     /store/viewAddStore         controllers.Store.viewAddStore()
+GET     /store/addStore             controllers.Store.viewAddStore()
 POST    /store						controllers.Store.addStore()
 
 #POST    /store/addAdmin			controllers.Store.addStore()
@@ -54,7 +54,13 @@ GET     /ordersHandle               controllers.OrderToHandle.index()
 # Product
 GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
+POST 	/product					controllers.Product.saveProduct()
+GET		/products					controllers.Product.getProducts()
 
+#Employee
+GET     /employee                  	controllers.Employee.index()
+#POST    /employee					controllers.Employee.save()
+GET     /employee/addEmployee       controllers.Employee.addEmployee()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
