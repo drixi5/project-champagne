@@ -12,8 +12,10 @@ import play.data.format.Formats;
 import play.data.validation.Constraints;
 
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * User: yesnault
@@ -26,11 +28,23 @@ public class ModelProduct extends Model {
 	public Long id;
 
     public String name;
-
-    public String type;
+    
+    @ManyToOne
+    public TypeProduct typeProduct ;
+    
     
     // -- Queries (long id, product.class)
     public static Model.Finder<Long, ModelProduct> find = new Model.Finder<Long, ModelProduct>(Long.class, ModelProduct.class);
+    
+    
+
+    public static HashMap<String, String> selectCollection()  {
+        HashMap<String, String> output = new HashMap<String, String>();
+
+        for(ModelProduct p : ModelProduct.find.all())  {
+            output.put(p.id.toString(), p.name);
+        }
+
+        return output;
+    }
 }
-
-

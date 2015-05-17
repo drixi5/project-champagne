@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /dashboard                  controllers.Dashboard.index()
+GET		/addProductStock			controllers.Dashboard.viewAddPStock()
+POST 	/dashboard					controllers.Dashboard.addProductStock()
 
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
@@ -36,6 +38,9 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 GET     /store                  	controllers.Store.index()
 GET     /store/addStore             controllers.Store.viewAddStore()
 POST    /store						controllers.Store.addStore()
+
+#POST    /store/addAdmin			controllers.Store.addStore()
+#POST    /store						controllers.Store.addAdmin()
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()

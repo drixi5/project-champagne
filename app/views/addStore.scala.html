@@ -1,5 +1,8 @@
-@(user: User)
 
+@import helper._
+
+
+@(user: User, form: Form[models.Stores])
 @main(user) {
 
 
@@ -11,8 +14,16 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
+				<!-- @helper.form(action=routes.Store.addStore) { -->
 
 				<div class="ibox-content">
+				
+				  @if(form.hasGlobalErrors) {
+				      <p class="error">
+				           @form.globalError.message
+				         Erreur !
+				      </p>
+				  }
 				
 					<form method="post" class="form-horizontal" action="@routes.Store.addStore()" >
 					  <div class="form-group">
@@ -53,10 +64,10 @@
 					
 				</div>
 			 </div>
+			 <!-- } -->
 		  </div>
 		</div>
 	  </div>
 </div>	      
-		      
 
 }

@@ -1,6 +1,7 @@
-@(user: User)
+@(user: User, stores : java.util.List[models.Stores])
 
 @main(user) {
+     @stores.size Store@(if(stores.size !=1) "s")
 
 <div class="wrapper wrapper-content">
       <div class="container">
@@ -17,6 +18,7 @@
      			  </a>
 		          <table class="table table-striped">
 		            <thead>
+		       
 		            <tr>
 		              <th>Nom</th>
 		              <th>Mail</th>
@@ -27,17 +29,19 @@
 		            </tr>
 		            </thead>
 		            <tbody>
+					@for(stores <- stores){		          
 			            <tr>
-			              <td>Aux Quatres Moulains</td>
-			              <td>o4moulains@@gmail.com</td>
-			              <td>110 avenue Victor Hugo</td>
-			              <td>92012</td>
-			              <td>Boulogne-Bilancourt</td>
-			              <td>
+			              <td>@stores.name</td>
+			              <td> @stores.email</td>
+			              <td>@stores.adress1</td>
+			              <td>@stores.codePostal</td>
+			              <td> @stores.ville</td>		             
+			              <td>    
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
                     	  </td>
 			            </tr>
+ 						}			            
 		            </tbody>
 		          </table>
 		        </div>
@@ -48,5 +52,5 @@
 		</div>
       </div>
     </div>
-    
+   
 }

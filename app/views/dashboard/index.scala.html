@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, stocks : java.util.List[models.Stock])
 
 @main(user) {
 
@@ -12,10 +12,13 @@
 		      </div>
 		      <div class="ibox-content">
 		        <div class="table-responsive">
+		         <a class="add-link" href="@routes.Dashboard.viewAddPStock()">
+     				<button class="btn btn-custom add" ><i class="fa fa-plus"></i> Ajouter un produit</button>
+     			  </a>
 		          <table class="table table-striped">
 		            <thead>
 		            <tr>
-		              <th>Nom - Espèce</th>
+		              <th>Nom - Espéce</th>
 		              <th>Type</th>
 		              <th>Quantité</th>
 		              <th>Seuil Min</th>
@@ -23,13 +26,15 @@
 		            </tr>
 		            </thead>
 		            <tbody>
+		            @for(stock <- stocks){	
 			            <tr>
-			              <td>Pomme - Golden</td>
-			              <td>Fruit</td>
-			              <td>20 kilogrammes</td>
-			              <td>8 kilogrammes</td>
-			              <td>30 kilogrammes</td>
+			              <td>@stock.product.name</td>
+			              <td>@stock.product.typeProduct.name</td>
+			              <td>@stock.quantity  @stock.unit.name</td>
+			              <td>@stock.threshold_min @stock.unit.name</td>
+			              <td>@stock.threshold_max @stock.unit.name</td>
 			            </tr>
+			            }
 		            </tbody>
 		          </table>
 		        </div>
