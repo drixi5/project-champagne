@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /dashboard                  controllers.Dashboard.index()
+GET		/addProductStock			controllers.Dashboard.viewAddPStock()
+POST 	/dashboard					controllers.Dashboard.addProductStock()
 
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()

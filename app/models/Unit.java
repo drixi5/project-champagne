@@ -1,5 +1,7 @@
 package models;
 
+import java.util.HashMap;
+
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
@@ -13,6 +15,18 @@ public class Unit extends Model{
 
     public String name;
     
+ 
     
-    public static Model.Finder<Long, Unit> find = new Model.Finder<>(Long.class, Unit.class);
+    public static Model.Finder<Long, Unit> find = new Model.Finder<Long, Unit>(Long.class, Unit.class);
+    
+    
+    public static HashMap<String, String> selectCollection()  {
+        HashMap<String, String> output = new HashMap<String, String>();
+
+        for(Unit u : Unit.find.all())  {
+            output.put(u.id.toString(), u.name);
+        }
+
+        return output;
+    }
 }

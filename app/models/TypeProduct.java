@@ -13,6 +13,6 @@ public class TypeProduct extends Model {
 
     public String name;
     
-    public static Model.Finder<Long, TypeProduct> find = new Model.Finder<>(Long.class, TypeProduct.class);
+    public static Model.Finder<Long, TypeProduct> find = new Model.Finder<Long, TypeProduct>(Long.class, TypeProduct.class);
 
 }

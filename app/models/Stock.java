@@ -2,14 +2,19 @@ package models;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.data.validation.ValidationError;
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Stock extends Model {
@@ -19,23 +24,20 @@ public class Stock extends Model {
 	
 	//@Constraints.Required
     //public Long entity_id;
-	
-	@ManyToOne
+
+	@ManyToOne 
     public ModelProduct product ;
 	
-	@ManyToOne
-    public Stores store ;
+	//@ManyToOne
+   // public Stores store ;
 
-    @Constraints.Required
-    @Formats.NonEmpty
-    @Column(unique = true)
-    public String name;
 
-    @Constraints.Required
-    @Formats.NonEmpty
-    public String type;
+    //@Constraints.Required
+   // @Formats.NonEmpty
+   // public String type;
 
-   // public String unit; obtenu grace a l'id du product
+	@ManyToOne 
+    public Unit unit;
 
     @Constraints.Required
     @Formats.NonEmpty
@@ -53,5 +55,7 @@ public class Stock extends Model {
     //public Date dateCreation;
     
     public static Model.Finder<Long, Stock> find = new Model.Finder<>(Long.class,Stock.class);
+    
+   
 
 }

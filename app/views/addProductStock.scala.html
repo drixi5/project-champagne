@@ -1,0 +1,72 @@
+@import helper._
+
+
+@(user: User, form: Form[models.Stock])
+@main(user) {
+
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Ajouter un produit au stock</h3>
+		      </div>
+
+@helper.form(action=routes.Dashboard.addProductStock) {
+<div class="ibox-content">
+
+<fieldset>
+
+
+@select(
+        form("product.id"),
+        options = ModelProduct.selectCollection.toSeq,
+        '_default -> "Choose One", 
+        '_label -> "Nom -Espèce",     
+        'class -> "form-control "   
+        )
+    
+@inputText(   
+			form("quantity"), 
+		    '_label -> "Quantity",
+		    'class -> "form-control input-lg"
+		   )    
+
+@select(
+        form("unit.id"),
+        options = Unit.selectCollection.toSeq,
+        '_default -> "Choose One", 
+        '_label -> "Unité",     
+        'class -> "form-control "   
+        )							
+
+@inputText(   
+			form("threshold_min"), 
+		    '_label -> "Seuil Min",
+		    'class -> "form-control input-lg"
+		   )  
+
+@inputText(   
+			form("threshold_max"), 
+		    '_label -> "Seuil Max",
+		    'class -> "form-control input-lg"
+		   )   		    
+
+</fieldset>
+
+<div class="button text-center">
+<button class="btn btn-primary btn-lg active">Valider</button>
+</div>
+}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>	      
+		      
+
+}      
