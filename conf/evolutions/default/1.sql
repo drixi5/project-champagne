@@ -16,6 +16,13 @@ create table model_product (
   constraint pk_model_product primary key (id))
 ;
 
+create table products (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  type_product_id           bigint,
+  constraint pk_products primary key (id))
+;
+
 create table stock (
   stock_id                  bigint auto_increment not null,
   product_id                bigint,
@@ -35,6 +42,16 @@ create table stores (
   code_postal               integer,
   ville                     varchar(255),
   constraint pk_stores primary key (id))
+;
+
+create table stores_products (
+  id                        bigint auto_increment not null,
+  product_id                bigint,
+  unit_id                   bigint,
+  quantity                  integer,
+  threshold_max             integer,
+  threshold_min             integer,
+  constraint pk_stores_products primary key (id))
 ;
 
 create table token (
@@ -74,10 +91,16 @@ create table user (
 
 alter table model_product add constraint fk_model_product_typeProduct_1 foreign key (type_product_id) references type_product (id) on delete restrict on update restrict;
 create index ix_model_product_typeProduct_1 on model_product (type_product_id);
-alter table stock add constraint fk_stock_product_2 foreign key (product_id) references model_product (id) on delete restrict on update restrict;
-create index ix_stock_product_2 on stock (product_id);
-alter table stock add constraint fk_stock_unit_3 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
-create index ix_stock_unit_3 on stock (unit_id);
+alter table products add constraint fk_products_typeProduct_2 foreign key (type_product_id) references type_product (id) on delete restrict on update restrict;
+create index ix_products_typeProduct_2 on products (type_product_id);
+alter table stock add constraint fk_stock_product_3 foreign key (product_id) references model_product (id) on delete restrict on update restrict;
+create index ix_stock_product_3 on stock (product_id);
+alter table stock add constraint fk_stock_unit_4 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
+create index ix_stock_unit_4 on stock (unit_id);
+alter table stores_products add constraint fk_stores_products_product_5 foreign key (product_id) references products (id) on delete restrict on update restrict;
+create index ix_stores_products_product_5 on stores_products (product_id);
+alter table stores_products add constraint fk_stores_products_unit_6 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
+create index ix_stores_products_unit_6 on stores_products (unit_id);
 
 
 
@@ -89,9 +112,13 @@ drop table model_employee;
 
 drop table model_product;
 
+drop table products;
+
 drop table stock;
 
 drop table stores;
+
+drop table stores_products;
 
 drop table token;
 
