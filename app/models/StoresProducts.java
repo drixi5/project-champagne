@@ -17,24 +17,18 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Stock extends Model {
+public class StoresProducts extends Model {
 
 	@Id
-    public Long stock_id;
+    public Long id;
 	
-	//@Constraints.Required
-    //public Long entity_id;
 
 	@ManyToOne 
-    public ModelProduct product ;
+    public Products product ;
 	
 	//@ManyToOne
    // public Stores store ;
 
-
-    //@Constraints.Required
-   // @Formats.NonEmpty
-   // public String type;
 
 	@ManyToOne 
     public Unit unit;
@@ -53,8 +47,10 @@ public class Stock extends Model {
     
     //@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
     //public Date dateCreation;
+  
+
     
-    public static Model.Finder<Long, Stock> find = new Model.Finder<Long, Stock>(Long.class,Stock.class);
+    public static Model.Finder<Long, StoresProducts> find = new Model.Finder<Long, StoresProducts>(Long.class,StoresProducts.class);
     
    
 

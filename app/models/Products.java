@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 import models.utils.AppException;
 import models.utils.Hash;
+import models.StoresProducts;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -22,7 +23,7 @@ import java.util.HashMap;
  * Date: 20/01/12
  */
 @Entity
-public class ModelProduct extends Model {
+public class Products extends Model {
 	
 	@Id
 	public Long id;
@@ -34,17 +35,17 @@ public class ModelProduct extends Model {
     
     
     // -- Queries (long id, product.class)
-    public static Model.Finder<Long, ModelProduct> find = new Model.Finder<Long, ModelProduct>(Long.class, ModelProduct.class);
+    public static Model.Finder<Long, Products> find = new Model.Finder<Long, Products>(Long.class, Products.class);
     
     
 
-    public static HashMap<String, String> selectCollection()  {
+    public static HashMap<String, String> selectProducts()  {
         HashMap<String, String> output = new HashMap<String, String>();
 
-        for(ModelProduct p : ModelProduct.find.all())  {
-            output.put(p.id.toString(), p.name);
-        }
+        for(Products p : Products.find.all())   {
 
+        			output.put(p.id.toString(), p.name) ;
+        }
         return output;
     }
 }
