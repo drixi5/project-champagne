@@ -10,6 +10,8 @@ import models.utils.Hash;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.data.format.Formats;
+import play.i18n.Messages;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
@@ -27,10 +29,34 @@ public class ModelProduct extends Model {
 	@Id
 	public Long id;
 
+	@Constraints.Required
+	@Formats.NonEmpty
     public String name;
     
     @ManyToOne
     public TypeProduct typeProduct ;
+    
+	/*public ModelProduct(String name,TypeProduct typeProduct) {
+        this.name = name;
+        this.typeProduct = typeProduct;
+
+    }
+	
+	public String getName(){
+		 return name;
+		}
+		
+		public void setName(String name){
+			this.name=name;
+		}
+		
+	public TypeProduct getTypeProdcut(){
+		return typeProduct;
+		}
+			
+		public void setTypeProduct(TypeProduct typeProduct){
+			this.typeProduct = typeProduct;
+		} */
     
     
     // -- Queries (long id, product.class)

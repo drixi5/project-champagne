@@ -1,4 +1,8 @@
-@(user: User) @main(user) {
+@import helper._
+
+@(user: User, form: Form[models.ModelProduct])
+@main(user) {
+
 
 <div class="wrapper wrapper-content">
 	<div class="container">
@@ -8,36 +12,31 @@
 					<div class="ibox-title">
 						<h3>Création d'un produit</h3>
 					</div>
-					
-					<script type= 'text/javascript' scr = '@routes.Assets.at("js/table.js")'></script>
-					
-					<ul id="products"></ul>
-					
-					<div class="ibox-content">
-						<form class="form-horizontal" method="post" action="@routes.Product.saveProduct()">
-							<div class="form-group">
-							  <label class="col-sm-2 control-label">Nom - Espece</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="name">
-							  </div>
-							</div><br/>
-							<div class="form-group">
-							  <label class="col-sm-2 control-label">Type</label>
-							  <div class="col-sm-10">
-							    <select class="form-control" name="type">
-								  <option value="Fruit"> Fruit</option>
-								  <option value="Legume">Légume</option>
-								  <option value="Feculent">Féculent</option>
-								</select>
-							  </div>
-							</div>
-							<div class="hr-line-dashed"></div>
 
+@helper.form(action=routes.Product.saveProduct) {
+<div class="ibox-content">
+
+<fieldset>
+
+@inputText(   
+			form("name"), 
+		    '_label -> "Nom-Espèce",
+		    'class -> "form-control input-lg"
+		   )
+		   
+@select(
+        form("typeProduct.id"),
+        options = TypeProduct.selectCollection.toSeq,
+        '_default -> "Choose One", 
+        '_label -> "Type",     
+        'class -> "form-control "   
+        )
+</fieldset>
 							<div class="button text-center">
 								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
-						</form>
+}
 						
 						<h3>Produits</h3>
 
@@ -63,7 +62,7 @@
 											</button>
 										</td>
 									</tr>
-									</div>
+									
 								</tbody>
 							</table>	
 					</div>
@@ -71,6 +70,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
+</div>
 
 	}
