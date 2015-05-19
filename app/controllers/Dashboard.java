@@ -24,7 +24,7 @@ import views.html.addProductStock;
 public class Dashboard extends Controller {
 
     public static Result index() {
-        return ok(index.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("stock_id asc").findList()));
+        return ok(index.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("id asc").findList()));
     }
     
     final static Form<StoresProducts> stockForm = form(StoresProducts.class);
