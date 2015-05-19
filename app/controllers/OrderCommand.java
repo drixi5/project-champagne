@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Stock;
+import models.StoresProducts;
 import models.Stores;
 import models.User;
 import play.mvc.Controller;
@@ -12,6 +12,6 @@ import views.html.orders.orderCommand;
 public class OrderCommand extends Controller {
 
 	public static Result index() {
-        return ok(orderCommand.render(User.findByEmail(request().username()), Stock.find.orderBy("stock_id asc").findList()));
+        return ok(orderCommand.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("stock_id asc").findList()));
     }
 }
