@@ -5,6 +5,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import play.data.format.Formats;
 import play.i18n.Messages;
@@ -36,7 +37,8 @@ public class Stores extends Model {
 	@Formats.NonEmpty
 	public String ville;
 	
-	
+	//@ManyToOne
+	//public User user;
 	
 	public Stores(String name,String email, String adress1, String adress2, int codePostal, String ville) {
         this.name = name;
@@ -47,7 +49,7 @@ public class Stores extends Model {
         this.ville=ville;
     }
 	
-	public String getName(){
+	/*public String getName(){
 	 return name;
 	}
 	
@@ -86,7 +88,7 @@ public class Stores extends Model {
 	public void setVille(String ville){
 		this.ville = ville;
 	}
-	
+	*/
 	
 	 public String validate(){
 		 if ((name == null) || (email == null) || (adress1 == null) || (codePostal == 0) || (ville == null)) {

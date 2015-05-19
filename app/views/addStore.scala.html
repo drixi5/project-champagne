@@ -14,10 +14,10 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
-				<!-- @helper.form(action=routes.Store.addStore) { -->
+				 @helper.form(action=routes.Store.addStore, 'class -> "form-horizontal ") { 
 
 				<div class="ibox-content">
-				
+		
 				  @if(form.hasGlobalErrors) {
 				      <p class="error">
 				           @form.globalError.message
@@ -25,46 +25,54 @@
 				      </p>
 				  }
 				
-					<form method="post" class="form-horizontal" action="@routes.Store.addStore()" >
+					<!-- <form method="post" class="form-horizontal" action="@routes.Store.addStore()" >  -->
+					 <fieldset> 
 					  <div class="form-group">
 						<label class="col-sm-2 control-label">Nom du restaurant</label>
 						<div class="col-sm-10">
 						  <input class="form-control" type="text" name="name">
 						</div>
+						</div><br/>	
+						<div class="form-group">
+						<label class="col-sm-2 control-label">Mail</label>
+						<div class="col-sm-10">
+						  <input class="form-control" type="text" name="email">
+						</div>
+						
 					  </div>
 					  <div class="hr-line-dashed"></div>
 					  <div class="form-group">
 						<label class="col-sm-2 control-label">Adresse 1</label>
 						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="address1">
+						  <input class="form-control" type="text" name="adress1">
 						</div>
 					  </div><br/>
 					  <div class="form-group">
 						<label class="col-sm-2 control-label">Adresse 2</label>
 						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="address2">
+						  <input class="form-control" type="text" name="adress2">
 						</div>
 					  </div><br/>
 					  <div class="form-group">
 						<label class="col-sm-2 control-label">Code Postal</label>
 						<div class="col-sm-4">
-						  <input class="form-control" type="text" name="post_code">
+						  <input class="form-control" type="text" name="codePostal">
 						</div>
 						<label class="col-sm-2 control-label">Ville</label>
 						<div class="col-sm-4">
-						  <input class="form-control" type="text" name="city">
+						  <input class="form-control" type="text" name="ville">
 						</div>
 					  </div>
 					  <div class="hr-line-dashed"></div>
-						
+					</fieldset>	
 						<div class="button text-center">
 							<button class="btn btn-primary btn-lg active">Continuer</button>
 						</div>
-					</form>
+					<!-- </form> -->
 					
 				</div>
 			 </div>
-			 <!-- } -->
+			 } 
 		  </div>
 		</div>
 	  </div>

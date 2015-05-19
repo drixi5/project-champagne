@@ -1,7 +1,7 @@
 package controllers;
 
 import models.User;
-import models.ModelProduct;
+import models.Products;
 
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -28,13 +28,13 @@ public class Product extends Controller {
 	}
 	
 	public static Result saveProduct(){
-		ModelProduct product = Form.form(ModelProduct.class).bindFromRequest().get();
+		Products product = Form.form(Products.class).bindFromRequest().get();
 		product.save();
 		return redirect(routes.Product.index());
 	}
 	
 	public static Result getProducts(){
-		List<Product> products = new Model.Finder(String.class, ModelProduct.class).all();
+		List<Product> products = new Model.Finder(String.class, Products.class).all();
 		return ok(toJson(products));
 	}
 	
