@@ -120,13 +120,15 @@ create table unit (
 create table user (
   id                        bigint auto_increment not null,
   email                     varchar(255),
-  fullname                  varchar(255),
+  firstname                 varchar(255),
+  lastname                  varchar(255),
   confirmation_token        varchar(255),
   password_hash             varchar(255),
   date_creation             datetime,
   validated                 tinyint(1) default 0,
+  type_user_id              bigint,
+  store_id                  bigint,
   constraint uq_user_email unique (email),
-  constraint uq_user_fullname unique (fullname),
   constraint pk_user primary key (id))
 ;
 
@@ -152,6 +154,10 @@ alter table suppliers_products add constraint fk_suppliers_products_product_10 f
 create index ix_suppliers_products_product_10 on suppliers_products (product_id);
 alter table suppliers_products add constraint fk_suppliers_products_unit_11 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
 create index ix_suppliers_products_unit_11 on suppliers_products (unit_id);
+alter table user add constraint fk_user_typeUser_12 foreign key (type_user_id) references type_user (id) on delete restrict on update restrict;
+create index ix_user_typeUser_12 on user (type_user_id);
+alter table user add constraint fk_user_store_13 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_user_store_13 on user (store_id);
 
 
 

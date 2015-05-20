@@ -86,7 +86,10 @@ public class Application extends Controller {
         public String email;
 
         @Constraints.Required
-        public String fullname;
+        public String lastname;
+        
+        @Constraints.Required
+        public String firstname;
 
         @Constraints.Required
         public String inputPassword;
@@ -101,8 +104,12 @@ public class Application extends Controller {
                 return "Email is required";
             }
 
-            if (isBlank(fullname)) {
-                return "Full name is required";
+            if (isBlank(lastname)) {
+                return "Last name is required";
+            }
+            
+            if (isBlank(firstname)) {
+                return "First name is required";
             }
 
             if (isBlank(inputPassword)) {
