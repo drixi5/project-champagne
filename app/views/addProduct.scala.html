@@ -1,6 +1,6 @@
 @import helper._
 
-@(user: User, form: Form[models.ModelProduct])
+@(user: User, form: Form[models.Products])
 @main(user) {
 
 
@@ -13,25 +13,25 @@
 						<h3>Création d'un produit</h3>
 					</div>
 
-@helper.form(action=routes.Product.saveProduct) {
-<div class="ibox-content">
-
-<fieldset>
-
-@inputText(   
-			form("name"), 
-		    '_label -> "Nom-Espèce",
-		    'class -> "form-control input-lg"
-		   )
-		   
-@select(
-        form("typeProduct.id"),
-        options = TypeProduct.selectCollection.toSeq,
-        '_default -> "Choose One", 
-        '_label -> "Type",     
-        'class -> "form-control "   
-        )
-</fieldset>
+					@helper.form(action=routes.Product.saveProduct) {
+					<div class="ibox-content">
+					
+					<fieldset>
+					
+					@inputText(   
+								form("name"), 
+							    '_label -> "Nom-Espèce",
+							    'class -> "form-control input-lg"
+							   )
+							   
+					@select(
+					        form("typeProduct.id"),
+					        options = TypeProduct.selectCollection.toSeq,
+					        '_default -> "Choose One", 
+					        '_label -> "Type",     
+					        'class -> "form-control "   
+					        )
+					</fieldset>
 							<div class="button text-center">
 								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>

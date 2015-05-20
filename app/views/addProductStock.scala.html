@@ -1,7 +1,7 @@
 @import helper._
 
 
-@(user: User, form: Form[models.Stock])
+@(user: User, form: Form[models.StoresProducts])
 @main(user) {
 
 
@@ -22,7 +22,7 @@
 
 @select(
         form("product.id"),
-        options = ModelProduct.selectCollection.toSeq,
+        options = Products.selectProducts.toSeq,
         '_default -> "Choose One", 
         '_label -> "Nom -Espèce",     
         'class -> "form-control "   
@@ -36,7 +36,7 @@
 
 @select(
         form("unit.id"),
-        options = Unit.selectCollection.toSeq,
+        options = Unit.selectUnit.toSeq,
         '_default -> "Choose One", 
         '_label -> "Unité",     
         'class -> "form-control "   

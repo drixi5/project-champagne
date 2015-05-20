@@ -2,25 +2,24 @@ package models;
 
 import java.util.HashMap;
 
-import play.db.ebean.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class Unit extends Model{
+import play.db.ebean.Model;
 
+@Entity
+public class Meals extends Model{
+	
 	@Id
 	public Long id;
 
     public String name;
-    
  
     
-    public static Model.Finder<Long, Unit> find = new Model.Finder<Long, Unit>(Long.class, Unit.class);
+    public static Model.Finder<Long, Meals> find = new Model.Finder<Long, Meals>(Long.class, Meals.class);
     
     
-    public static HashMap<String, String> selectUnit()  {
+    public static HashMap<String, String> selectMeal()  {
         HashMap<String, String> output = new HashMap<String, String>();
 
         for(Unit u : Unit.find.all())  {
@@ -29,4 +28,5 @@ public class Unit extends Model{
 
         return output;
     }
+
 }

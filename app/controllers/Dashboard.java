@@ -6,8 +6,8 @@ import javax.validation.*;
 
 import models.Stores;
 import models.User;
-import models.ModelProduct;
-import models.Stock;
+import models.Products;
+import models.StoresProducts;
 import models.Unit;
 import play.data.Form;
 import play.mvc.Controller;
@@ -24,10 +24,10 @@ import views.html.addProductStock;
 public class Dashboard extends Controller {
 
     public static Result index() {
-        return ok(index.render(User.findByEmail(request().username()), Stock.find.orderBy("stock_id asc").findList()));
+        return ok(index.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("id asc").findList()));
     }
     
-    final static Form<Stock> stockForm = form(Stock.class);
+    final static Form<StoresProducts> stockForm = form(StoresProducts.class);
     
     public static Result viewAddPStock(){
     	return ok(addProductStock.render(User.findByEmail(request().username()), stockForm));
@@ -36,7 +36,7 @@ public class Dashboard extends Controller {
     
     
     public static Result addProductStock(){
-    	Form<Stock> form = stockForm.bindFromRequest();
+    	Form<StoresProducts> form = stockForm.bindFromRequest();
     	
     	if (form.hasErrors()){
 			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
@@ -44,7 +44,7 @@ public class Dashboard extends Controller {
 		 else
 		 { 
 			 
-			 Stock stock= form.get();
+			 StoresProducts stock= form.get();
 			 stock.save();
 			 return index();
 		 }	 
