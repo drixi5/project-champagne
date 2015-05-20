@@ -16,10 +16,10 @@ import views.html.addEmployee;
 public class Employee extends Controller {
 	
 	public static Result index() {
-        return ok(employee.render(User.findByEmail(request().username())));
+        return ok(employee.render(User.findByEmail(request().username()), User.find.orderBy("id asc").findList()));
     }
 	
-	//final static Form<User> usersForm = form(User.class);
+	final static Form<User> usersForm = form(User.class);
 	
 	public static Result addEmployee() {
         return ok(addEmployee.render(User.findByEmail(request().username())));
