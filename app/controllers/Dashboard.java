@@ -38,15 +38,15 @@ public class Dashboard extends Controller {
     public static Result addProductStock(){
     	Form<StoresProducts> form = stockForm.bindFromRequest();
     	
-    	if (form.hasErrors()){
+    	/*if (form.hasErrors()){
 			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
 		 }
 		 else
-		 { 
+		 { */
 			 
 			 StoresProducts stock= form.get();
 			 stock.save();
 			 return index();
-		 }	 
+		 	 
     }
 }
