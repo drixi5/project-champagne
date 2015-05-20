@@ -12,6 +12,6 @@ import views.html.orders.orderCommand;
 public class OrderCommand extends Controller {
 
 	public static Result index() {
-        return ok(orderCommand.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("stock_id asc").findList()));
+        return ok(orderCommand.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("product_id asc").findList()));
     }
 }

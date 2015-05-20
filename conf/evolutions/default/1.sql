@@ -9,12 +9,6 @@ create table meals (
   constraint pk_meals primary key (id))
 ;
 
-create table model_employee (
-  stock_id                  bigint auto_increment not null,
-  entity_id                 bigint,
-  constraint pk_model_employee primary key (stock_id))
-;
-
 create table orders_stores (
   id                        bigint auto_increment not null,
   reference                 varchar(255),
@@ -48,6 +42,7 @@ create table products (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   type_product_id           bigint,
+  constraint uq_products_name unique (name),
   constraint pk_products primary key (id))
 ;
 
@@ -165,8 +160,6 @@ create index ix_suppliers_products_unit_11 on suppliers_products (unit_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table meals;
-
-drop table model_employee;
 
 drop table orders_stores;
 

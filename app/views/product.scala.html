@@ -1,6 +1,7 @@
-@(user: User)
+@(user: User, Products : java.util.List[models.Products])
 
 @main(user){
+	@Products.size Product@(if(Products.size !=1) "s")
 
 <div class="wrapper wrapper-content">
       <div class="container">
@@ -24,14 +25,16 @@
 		            </tr>
 		            </thead>
 		            <tbody>
+		            	@for(Product <- Products){	
 			            <tr>
-			              <td>Courgette</td>
-			              <td>Legumes</td>
+			              <td>@Product.name</td>
+			              <td>@Product.typeProduct.name</td>
 			              <td>
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
                     	  </td>
 			            </tr>
+			            }
 		            </tbody>
 		          </table>
 		        </div>
