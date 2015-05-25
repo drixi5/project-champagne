@@ -1,4 +1,6 @@
-@(user: User, stocks : java.util.List[models.StoresProducts])
+@import helper._
+
+@(user: User, stocks : java.util.List[models.StoresProducts], quantityForm: Form[Dashboard.Quantity])
 
 @main(user) {
 
@@ -23,6 +25,7 @@
 		              <th>Quantité</th>
 		              <th>Seuil Min</th>
 		              <th>Seuil Max</th>
+		            
 		            </tr>
 		            </thead>
 		            <tbody>
@@ -30,9 +33,42 @@
 			            <tr>
 			              <td>@stock.product.name</td>
 			              <td>@stock.product.typeProduct.name</td>
-			              <td>@stock.quantity  @stock.unit.name</td>
+			              <td>
+			              @stock.quantity
+			              @stock.unit.name
+	
+			              @if(stock.edit == false ){
+			              }else{ 
+			              @form(routes.Dashboard.modifyAdd(stock.id), 'class -> "form") {
+			              <br/>
+			              <input class="input-mini" type="text" name="quantity" placeholder=0>
+			              <button type="submit" class="btn btn-sm btn-default">
+			              <span class="glyphicon glyphicon-plus"></span></button>
+			              }
+			               @form(routes.Dashboard.modifyMinus(stock.id), 'class -> "form") {
+			              <input class="input-mini" type="text" name="quantity" placeholder=0>
+			              <button type="submit" class="btn btn-sm btn-default">
+			              <span class="glyphicon glyphicon-minus"></span></button>
+			       		     }
+			              } 
+			              </td>
 			              <td>@stock.threshold_min @stock.unit.name</td>
 			              <td>@stock.threshold_max @stock.unit.name</td>
+			              <td>
+			              @if(stock.edit == false ){
+			              <a href="@routes.Dashboard.edit(stock.id)">
+			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              </a> 	
+			              <a href="@routes.Dashboard.destroy(stock.id)">
+                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  </a> 
+                    	  }else{
+                    	   <a href="@routes.Dashboard.endModify(stock.id)">
+                    	  	<button class="btn btn-custom btn-s"><i class="fa fa-pencil"></i></button>
+                    	  	 </a> 
+                    	  }
+                    	  
+                    	  </td>		
 			            </tr>
 			            }
 		            </tbody>
