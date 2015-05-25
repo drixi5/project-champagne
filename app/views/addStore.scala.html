@@ -2,7 +2,7 @@
 @import helper._
 
 
-@(user: User, form: Form[models.Stores])
+@(user: User, form: Form[models.Stores], store : models.Stores, actionRoute : play.api.mvc.Call)
 @main(user) {
 
 
@@ -14,7 +14,7 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
-				 @helper.form(action=routes.Store.addStore, 'class -> "form-horizontal ") { 
+				 @helper.form(action=actionRoute, 'class -> "form-horizontal ") { 
 
 				<div class="ibox-content">
 		
@@ -28,40 +28,83 @@
 					<!-- <form method="post" class="form-horizontal" action="@routes.Store.addStore()" >  -->
 					 <fieldset> 
 					  <div class="form-group">
-						<label class="col-sm-2 control-label">Nom du restaurant</label>
-						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="name">
-						</div>
+						
+						@inputText(   
+								form("name"), 
+		    					'_label -> "Nom du restaurant", 
+		    					'_div_class -> "col-sm-10",
+		   						'class -> "form-control",
+		   						'value -> "store.name",
+		   						'placeholder -> "Name"
+		   						)   
 						</div><br/>	
 						<div class="form-group">
-						<label class="col-sm-2 control-label">Mail</label>
-						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="email">
-						</div>
+						
+						<!--  <label class="col-sm-2 control-label">Mail</label> -->
+
+						@inputText(   
+								form("email"), 
+		    					'_label -> "Email", 
+		    					'_div_class -> "col-sm-10",
+		   						'class -> "form-control",
+		   						'value -> "store.email",
+		   						'placeholder -> "Email"
+		   						)   
+						<!--   <input class="form-control" type="text" name="email" value="@store.email"> -->
 						
 					  </div>
 					  <div class="hr-line-dashed"></div>
 					  <div class="form-group">
-						<label class="col-sm-2 control-label">Adresse 1</label>
-						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="adress1">
-						</div>
+					 
+						<!-- <label class="col-sm-2 control-label">Adresse 1</label> -->
+						@inputText(   
+								form("adress1"), 
+		    					'_label -> "Adresse 1",
+		   						'class -> "form-control",
+		   						'value -> "store.adress1",
+		   						'placeholder -> "Adress 1"
+		   						) 
+						<!--  <input class="form-control" type="text" name="adress1" value="@store.adress1"> -->
+
 					  </div><br/>
 					  <div class="form-group">
-						<label class="col-sm-2 control-label">Adresse 2</label>
-						<div class="col-sm-10">
-						  <input class="form-control" type="text" name="adress2">
-						</div>
+					  
+					  
+					<!-- 	<label class="col-sm-2 control-label">Adresse 2</label> -->
+						
+						@inputText(   
+								form("adress2"), 
+		    					'_label -> "Adresse 2",
+		    					'_div_class -> "col-sm-10", 
+		   						'class -> "form-control",
+		   						'value -> "store.adress2",
+		   						'placeholder -> "Adress 2"
+		   						) 
+					<!-- 	  <input class="form-control" type="text" name="adress2" value="@store.adress2"> -->
 					  </div><br/>
 					  <div class="form-group">
-						<label class="col-sm-2 control-label">Code Postal</label>
-						<div class="col-sm-4">
-						  <input class="form-control" type="text" name="codePostal">
-						</div>
-						<label class="col-sm-2 control-label">Ville</label>
-						<div class="col-sm-4">
-						  <input class="form-control" type="text" name="ville">
-						</div>
+					<!-- 	<label class="col-sm-2 control-label">Code Postal</label> -->
+						<div class="col-sm-6">
+						 @inputText(   
+								form("codePostal"), 
+		    					'_label -> "Code Postal",
+		   						'class -> "form-control",
+		   						'value -> "store.codePostal",
+		   						'placeholder -> "Post Code"
+		   						) 
+					<!--	  <input class="form-control" type="text" name="codePostal" value="@store.codePostal"> -->
+						</div> 
+					 <!--	<label class="col-sm-2 control-label">Ville</label> -->
+						<div class="col-sm-6">
+						 @inputText(   
+								form("ville"), 
+		    					'_label -> "Ville", 
+		   						'class -> "form-control",
+		   						'value -> "store.ville",
+		   						'placeholder -> "City"
+		   						) 
+						 <!--  <input class="form-control" type="text" name="ville" value="@store.ville"> -->
+						</div> 
 					  </div>
 					  <div class="hr-line-dashed"></div>
 					</fieldset>	

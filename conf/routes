@@ -38,6 +38,9 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 GET     /store                  	controllers.Store.index()
 GET     /store/addStore             controllers.Store.viewAddStore()
 POST    /store						controllers.Store.addStore()
+GET     /store/:id/edit   			controllers.Store.edit(id: Long)
+POST    /store/:id        			controllers.Store.update(id: Long)
+GET  /store/:id		  			controllers.Store.destroy(id: Long)
 
 #POST    /store/addAdmin			controllers.Store.addStore()
 #POST    /store						controllers.Store.addAdmin()

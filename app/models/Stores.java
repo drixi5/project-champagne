@@ -39,6 +39,8 @@ public class Stores extends Model {
 	
 	//@ManyToOne
 	//public User user;
+	public Stores()  {
+    }
 	
 	public Stores(String name,String email, String adress1, String adress2, int codePostal, String ville) {
         this.name = name;

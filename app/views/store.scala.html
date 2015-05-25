@@ -1,7 +1,7 @@
 @(user: User, stores : java.util.List[models.Stores])
 
 @main(user) {
-     @stores.size Store@(if(stores.size !=1) "s")
+    <!-- @stores.size Store@(if(stores.size !=1) "s")  -->
 
 <div class="wrapper wrapper-content">
       <div class="container">
@@ -36,9 +36,13 @@
 			              <td>@stores.adress1</td>
 			              <td>@stores.codePostal</td>
 			              <td> @stores.ville</td>		             
-			              <td>    
+			              <td>
+			              <a href="@routes.Store.edit(stores.id)">
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              </a> 	
+			              <a href="@routes.Store.destroy(stores.id)">
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  </a> 		
                     	  </td>
 			            </tr>
  						}			            
