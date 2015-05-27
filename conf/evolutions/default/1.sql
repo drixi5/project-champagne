@@ -64,6 +64,7 @@ create table stores_products (
   quantity                  integer,
   threshold_max             integer,
   threshold_min             integer,
+  edit                      tinyint(1) default 0,
   constraint pk_stores_products primary key (id))
 ;
 

@@ -47,6 +47,9 @@ public class StoresProducts extends Model {
     
     //@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
     //public Date dateCreation;
+    
+    @Formats.NonEmpty
+    public Boolean edit = false;
   
 
     

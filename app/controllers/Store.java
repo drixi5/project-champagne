@@ -9,6 +9,7 @@ import play.data.Form;
 import views.html.store;
 import views.html.addStore;
 import views.html.addAdmin;
+import views.html.editStore;
 import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
@@ -22,7 +23,9 @@ public class Store extends Controller {
 	 final static Form<Stores> storeForm = form(Stores.class);
 	 
 	 public static Result viewAddStore(){
-		 return ok(addStore.render(User.findByEmail(request().username()),storeForm));
+		 Stores store = new Stores();
+		 
+		 return ok(addStore.render(User.findByEmail(request().username()),storeForm, store, routes.Store.addStore()));
 	 }
 	 	 
 	 
@@ -31,7 +34,8 @@ public class Store extends Controller {
 		 Form<Stores> form = storeForm.bindFromRequest();
 		 
 		 if (form.hasErrors()){
-			 return badRequest(addStore.render(User.findByEmail(request().username()),form));
+			 Stores store = new Stores();
+			 return badRequest(addStore.render(User.findByEmail(request().username()),form, store, routes.Store.addStore()));
 		 }
 		 else
 		 { 
@@ -48,4 +52,34 @@ public class Store extends Controller {
    	  	 admin.save();
    	     return index();
 	 }*/
+	 
+	 public static Result edit(Long id)  {
+	        Stores store = Stores.find.byId(id);
+	        
+	        return ok(editStore.render(User.findByEmail(request().username()),storeForm.fill(store), store));
+	    }
+	 
+	 
+	 public static Result update(Long id)  {
+		 	Form<Stores> filledForm = storeForm.bindFromRequest();
+
+	        /*if(filledForm.hasErrors())  {
+	            //can't pull out of the form if there are errors
+	            Book book = Book.find.byId(id);
+	            return ok(edit.render(filledForm, book));
+	        } else {*/
+	            Stores store = filledForm.get();
+	            store.update(id);
+	            return index();
+	        
+	    }
+	 
+	 public static Result destroy(Long id)  {
+		 	Stores store = Stores.find.byId(id);
+		 	
+	            store.delete();
+	            return index();
+	        
+	    }
+
 }

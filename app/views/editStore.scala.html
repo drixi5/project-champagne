@@ -1,0 +1,6 @@
+@(user: User, form: Form[models.Stores], store: models.Stores)
+
+@import models.Stores
+
+
+    @addStore(user, form, store, routes.Store.update(store.id))
