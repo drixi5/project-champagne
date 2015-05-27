@@ -1,6 +1,8 @@
 package controllers;
 
 import models.User;
+import models.TypeUser;
+import models.Stores;
 import models.utils.AppException;
 import play.Logger;
 import play.data.Form;

@@ -51,8 +51,8 @@ public class User extends Model {
     @ManyToOne
     public TypeUser typeUser;
     
-    /*@ManyToOne
-    public Stores store;*/
+    @ManyToOne
+    public Stores store;
 
     // -- Queries (long id, user.class)
     public static Model.Finder<Long, User> find = new Model.Finder<Long, User>(Long.class, User.class);
@@ -139,5 +139,7 @@ public class User extends Model {
         user.save();
         return true;
     }
+    
+    
 
 }

@@ -1,7 +1,8 @@
 package controllers;
 
-import static play.data.Form.form;
 import models.Products;
+import models.TypeUser;
+import models.Stores;
 import models.User;
 import play.mvc.*;
 import play.data.Form;
@@ -11,6 +12,8 @@ import java.util.List;
 
 import views.html.employee;
 import views.html.addEmployee;
+
+import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
 public class Employee extends Controller {
@@ -22,6 +25,6 @@ public class Employee extends Controller {
 	final static Form<User> usersForm = form(User.class);
 	
 	public static Result addEmployee() {
-        return ok(addEmployee.render(User.findByEmail(request().username())));
+        return ok(addEmployee.render(User.findByEmail(request().username()), usersForm));
     }
 }

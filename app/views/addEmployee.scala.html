@@ -1,4 +1,4 @@
-@(user: User, signupForm: Form[Application.Register]) 
+@(user: User, usersForm: Form[models.User]) 
 
 @import helper._
     @implicitFieldConstructor = @{
@@ -21,48 +21,48 @@
 					<div class="ibox-title">
 						<h3>Ajout d'un employee</h3>
 					</div>
-					@account.signup.createFormOnly(signupForm)
+					
 					@form(controllers.account.routes.Signup.save()) {
 		
 				    <fieldset>
 				        @inputText(
-				            signupForm("email"),
+				            usersForm("email"),
 				            'placeholder -> Messages("email"),
 				            '_label -> null,
 				            'class -> "form-control"
 				        )
 				        @inputText(
-				            signupForm("firstname"),
+				            usersForm("firstname"),
 				            'placeholder -> Messages("firstname"),
 				            '_label -> null,
 				            'class -> "form-control"
 				        )
 				        @inputText(
-				            signupForm("lastname"),
+				            usersForm("lastname"),
 				            'placeholder -> Messages("lastname"),
 				            '_label -> null,
 				            'class -> "form-control"
 				        )
 				        @inputPassword(
-				            signupForm("inputPassword"),
+				            usersForm("inputPassword"),
 				            '_label -> null,
 				            'placeholder -> Messages("password"),
 				            'class -> "form-control"
 				        )
 				        @select(
-					        signupForm("typeUser.id"),
-					        options = TypeProduct.selectCollection.toSeq,
+					        usersForm("typeUser.id"),
+					        options = TypeUser.selectTypeUser.toSeq,
 					        '_default -> "Choose One", 
 					        '_label -> "statut",     
 					        'class -> "form-control "   
 					        )
-					    <!-- @select(
-					        signupForm("store.id"),
-					        options = TypeProduct.selectCollection.toSeq,
+					    @select(
+					        usersForm("store.id"),
+					        options = Stores.selectStores.toSeq,
 					        '_default -> "Choose One", 
 					        '_label -> "Entite",     
 					        'class -> "form-control "   
-					        ) -->
+					        )
 				    </fieldset>
 				
 					<div class="hr-line-dashed"></div>
@@ -72,7 +72,6 @@
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 						}
-
 					</div>
 				</div>
 			</div>
