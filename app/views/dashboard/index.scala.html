@@ -31,6 +31,7 @@
 		            <tbody>
 		            @for(stock <- stocks){	
 			            <tr>
+<<<<<<< HEAD
 			              <td>@stock.product.name</td>
 			              <td>@stock.product.typeProduct.name</td>
 			              <td>
@@ -52,6 +53,11 @@
 			       		     }
 			              } 
 			              </td>
+=======
+			            	 <td>@stock.product.name</td>   
+			              <td>@stock.product.typeProduct.name</td>  
+			              <td>@stock.quantity  @stock.unit.name</td>
+>>>>>>> master
 			              <td>@stock.threshold_min @stock.unit.name</td>
 			              <td>@stock.threshold_max @stock.unit.name</td>
 			              <td>

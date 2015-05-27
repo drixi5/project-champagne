@@ -9,6 +9,8 @@ import play.db.ebean.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import java.util.Date;
 
 /**
@@ -28,8 +30,11 @@ public class User extends Model {
 
     @Constraints.Required
     @Formats.NonEmpty
-    @Column(unique = true)
-    public String fullname;
+    public String firstname;
+    
+    @Constraints.Required
+    @Formats.NonEmpty
+    public String lastname;
 
     public String confirmationToken;
 
@@ -42,6 +47,12 @@ public class User extends Model {
 
     @Formats.NonEmpty
     public Boolean validated = false;
+    
+    @ManyToOne
+    public TypeUser typeUser;
+    
+    @ManyToOne
+    public Stores store;
 
     // -- Queries (long id, user.class)
     public static Model.Finder<Long, User> find = new Model.Finder<Long, User>(Long.class, User.class);
@@ -55,15 +66,25 @@ public class User extends Model {
     public static User findByEmail(String email) {
         return find.where().eq("email", email).findUnique();
     }
-
+    
     /**
-     * Retrieve a user from a fullname.
+     * Retrieve a user from a firstname.
      *
-     * @param fullname Full name
+     * @param firstname First name
      * @return a user
      */
-    public static User findByFullname(String fullname) {
-        return find.where().eq("fullname", fullname).findUnique();
+    public static User findByFirstname(String firstname) {
+        return find.where().eq("firstname", firstname).findUnique();
+    }
+
+    /**
+     * Retrieve a user from a lastname.
+     *
+     * @param lastname Last name
+     * @return a user
+     */
+    public static User findByLastname(String lastname) {
+        return find.where().eq("lastname", lastname).findUnique();
     }
 
     /**
@@ -118,5 +139,7 @@ public class User extends Model {
         user.save();
         return true;
     }
+    
+    
 
 }

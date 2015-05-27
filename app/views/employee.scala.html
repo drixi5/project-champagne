@@ -1,6 +1,7 @@
-@(user: User)
+@(user: User, Users : java.util.List[models.User])
 
 @main(user) {
+	
 
 <div class="wrapper wrapper-content">
       <div class="container">
@@ -8,7 +9,7 @@
 		  <div class="col-lg-12">
 		    <div class="ibox float-e-margins">
 		      <div class="ibox-title">
-		        <h3>Restaurants</h3>
+		        <h3>Employees</h3>
 		      </div>
 		      <div class="ibox-content">
 		        <div class="table-responsive">
@@ -26,16 +27,20 @@
 		            </tr>
 		            </thead>
 		            <tbody>
+		            @for(User <- Users){
 			            <tr>
-			              <td>Doe</td>
-			              <td>John</td>
-			              <td>john.doe@@gmail.com</td>
-			              <td>Cuisinier</td>
+			              <td>@User.lastname</td>
+			              <td>@User.firstname</td>
+			              <td>@User.email</td>
+			              <td>@User.typeUser.name</td>
+			              @if(User.typeUser.id != 1) {
 			              <td>
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
                     	  </td>
+                    	  }
 			            </tr>
+			            }
 		            </tbody>
 		          </table>
 		        </div>

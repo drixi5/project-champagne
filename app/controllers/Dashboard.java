@@ -47,7 +47,7 @@ public class Dashboard extends Controller {
 			 StoresProducts stock= form.get();
 			 stock.save();
 			 return index();
-		 }	 
+		 }
     }
     
     public static Result edit(Long id){

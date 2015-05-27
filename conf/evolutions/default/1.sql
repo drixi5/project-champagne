@@ -9,12 +9,6 @@ create table meals (
   constraint pk_meals primary key (id))
 ;
 
-create table model_employee (
-  stock_id                  bigint auto_increment not null,
-  entity_id                 bigint,
-  constraint pk_model_employee primary key (stock_id))
-;
-
 create table orders_stores (
   id                        bigint auto_increment not null,
   reference                 varchar(255),
@@ -48,6 +42,7 @@ create table products (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   type_product_id           bigint,
+  constraint uq_products_name unique (name),
   constraint pk_products primary key (id))
 ;
 
@@ -126,13 +121,15 @@ create table unit (
 create table user (
   id                        bigint auto_increment not null,
   email                     varchar(255),
-  fullname                  varchar(255),
+  firstname                 varchar(255),
+  lastname                  varchar(255),
   confirmation_token        varchar(255),
   password_hash             varchar(255),
   date_creation             datetime,
   validated                 tinyint(1) default 0,
+  type_user_id              bigint,
+  store_id                  bigint,
   constraint uq_user_email unique (email),
-  constraint uq_user_fullname unique (fullname),
   constraint pk_user primary key (id))
 ;
 
@@ -158,6 +155,10 @@ alter table suppliers_products add constraint fk_suppliers_products_product_10 f
 create index ix_suppliers_products_product_10 on suppliers_products (product_id);
 alter table suppliers_products add constraint fk_suppliers_products_unit_11 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
 create index ix_suppliers_products_unit_11 on suppliers_products (unit_id);
+alter table user add constraint fk_user_typeUser_12 foreign key (type_user_id) references type_user (id) on delete restrict on update restrict;
+create index ix_user_typeUser_12 on user (type_user_id);
+alter table user add constraint fk_user_store_13 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_user_store_13 on user (store_id);
 
 
 
@@ -166,8 +167,6 @@ create index ix_suppliers_products_unit_11 on suppliers_products (unit_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table meals;
-
-drop table model_employee;
 
 drop table orders_stores;
 

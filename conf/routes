@@ -58,6 +58,8 @@ GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
 GET     /ordersProgress             controllers.OrderInProgress.index()
 GET     /ordersValid                controllers.OrderValid.index()
 GET     /ordersHandle               controllers.OrderToHandle.index()
+GET     /ordersCommand			    controllers.OrderCommand.index()
+
 
 # Product
 GET     /product                  	controllers.Product.index()
