@@ -1,5 +1,7 @@
 package models;
 
+import java.util.HashMap;
+
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -118,5 +120,15 @@ public class Stores extends Model {
 	
 	
 	public static  Model.Finder<Long, Stores> find = new  Model.Finder<Long, Stores>(Long.class, Stores.class);
+	
+	public static HashMap<String, String> selectStores()  {
+        HashMap<String, String> output = new HashMap<String, String>();
+
+        for(Stores p : Stores.find.all())   {
+
+        			output.put(p.id.toString(), p.name) ;
+        }
+        return output;
+    }
 
 }

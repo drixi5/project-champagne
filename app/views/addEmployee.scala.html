@@ -1,4 +1,17 @@
-@(user: User) @main(user) {
+@(user: User, usersForm: Form[models.User]) 
+
+@import helper._
+    @implicitFieldConstructor = @{
+        FieldConstructor(twitterBootstrapInput.render)
+    }
+
+@scripts = {
+    <script src="@routes.Assets.at("javascripts/password.js")" type="text/javascript"></script>
+}
+
+@main(user, scripts) {
+
+@wflash()
 
 <div class="wrapper wrapper-content">
 	<div class="container">
@@ -8,52 +21,57 @@
 					<div class="ibox-title">
 						<h3>Ajout d'un employee</h3>
 					</div>
-					<div class="ibox-content">
-
-						<form class="form-horizontal" method="post">
-						  <div class="form-group">
-							  <label class="col-sm-2 control-label">Nom</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="lastname">
-							  </div>
-						  </div><br/>
-						  <div class="form-group">
-							  <label class="col-sm-2 control-label">Prenom</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="firstname">
-							  </div>
-						  </div><br/>
-						  <div class="form-group">
-							  <label class="col-sm-2 control-label">Adresse 1</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="address1">
-							  </div>
-						  </div><br/>
-						  <div class="form-group">
-							  <label class="col-sm-2 control-label">Adresse 2</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="address2">
-							  </div>
-						  </div><br/>
-						  <div class="form-group">
-							  <label class="col-sm-2 control-label">Code Postal</label>
-							  <div class="col-sm-4">
-							    <input class="form-control" type="text" name="post_code">
-							  </div>
-							  <label class="col-sm-2 control-label">Ville</label>
-							  <div class="col-sm-4">
-							    <input class="form-control" type="text" name="city">
-							  </div>
-						    </div>
-							
-							<div class="hr-line-dashed"></div>
+					
+					@form(controllers.account.routes.Signup.save()) {
+		
+				    <fieldset>
+				        @inputText(
+				            usersForm("email"),
+				            'placeholder -> Messages("email"),
+				            '_label -> null,
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("firstname"),
+				            'placeholder -> Messages("firstname"),
+				            '_label -> null,
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("lastname"),
+				            'placeholder -> Messages("lastname"),
+				            '_label -> null,
+				            'class -> "form-control"
+				        )
+				        @inputPassword(
+				            usersForm("inputPassword"),
+				            '_label -> null,
+				            'placeholder -> Messages("password"),
+				            'class -> "form-control"
+				        )
+				        @select(
+					        usersForm("typeUser.id"),
+					        options = TypeUser.selectTypeUser.toSeq,
+					        '_default -> "Choose One", 
+					        '_label -> "statut",     
+					        'class -> "form-control "   
+					        )
+					    @select(
+					        usersForm("store.id"),
+					        options = Stores.selectStores.toSeq,
+					        '_default -> "Choose One", 
+					        '_label -> "Entite",     
+					        'class -> "form-control "   
+					        )
+				    </fieldset>
+				
+					<div class="hr-line-dashed"></div>
 
 							<div class="button text-center">
 								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
-								<button type="button" class="btn btn-primary btn-lg active">Valider</button>
+								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
-						</form>
-
+						}
 					</div>
 				</div>
 			</div>
