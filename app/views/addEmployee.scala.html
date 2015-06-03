@@ -22,7 +22,8 @@
 						<h3>Ajout d'un employee</h3>
 					</div>
 					
-					@form(controllers.account.routes.Signup.save()) {
+					@form(controllers.account.routes.Signup.save()){
+					<div class="ibox-content">
 		
 				    <fieldset>
 				        @inputText(
