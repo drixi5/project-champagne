@@ -45,9 +45,9 @@
 		            @if(user.typeUser.id == 2){<li><a href="@routes.OrderCommand.index()">Commander</a></li>}
 		            @if(user.typeUser.id == 1 || user.typeUser.id == 5){<li><a href="@routes.OrderToHandle.index()">Commandes a traiter</a></li>}
 		            @if(user.typeUser.id == 1 || user.typeUser.id == 2){<li><a href="@routes.OrderInProgress.index()">Commandes en cours</a></li>}
-		            @if(user.typeUser.id == 1 || user.typeUser.id == 2 || user.typeUser.id == 5){<li><a href="@routes.OrderValid.index()">Commandes traites</a></li>}
+		            @if(user.typeUser.id == 1 || user.typeUser.id == 2 || user.typeUser.id == 5){<li><a href="@routes.OrderValid.index()">Commandes traitees</a></li>}
 		          </ul>
-		        </li>
+		         </li>
 		        }
 		        @if(user.typeUser.id == 1){
 		        <li>
