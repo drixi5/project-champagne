@@ -12,7 +12,6 @@ import java.util.List;
 
 import views.html.employee;
 import views.html.addEmployee;
-
 import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
@@ -27,4 +26,12 @@ public class Employee extends Controller {
 	public static Result addEmployee() {
         return ok(addEmployee.render(User.findByEmail(request().username()), usersForm));
     }
+	
+	public static Result destroy(Long id)  {
+	 	User user = User.find.byId(id);
+	 	
+            user.delete();
+            return index();
+        
+    } 
 }
