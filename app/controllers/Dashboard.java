@@ -40,9 +40,11 @@ public class Dashboard extends Controller {
     	
     	if (form.hasErrors()){
 			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
-		 }
-		 else
-		 { 
+		 
+    	}else if(stockForm.get().threshold_max<stockForm.get().threshold_min){
+    		 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
+    	
+    	}else { 
 			 
 			 StoresProducts stock= form.get();
 			 stock.save();
@@ -50,12 +52,18 @@ public class Dashboard extends Controller {
 		 }
     }
     
+   
+ 	
+    
+    
+    
     public static Result edit(Long id){
     	StoresProducts stock = StoresProducts.find.byId(id);
     	stock.edit=true;
     	stock.save();
     	return index();
     }
+    
     
     public static class Quantity {
     	
