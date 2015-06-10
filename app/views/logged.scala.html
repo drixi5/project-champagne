@@ -19,7 +19,12 @@
 		          <a aria-expanded="false" role="button" href="@routes.Dashboard.index()"><i class="fa fa-home imenu"></i> Stocks</a>
 		        </li>
 		      }
-		      @if(user.typeUser.id == 2) {
+		      @if(user.typeUser.id == 4) {
+		      	<li>
+		          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Boissons</a>
+		        </li>
+		      }
+		      @if(user.typeUser.id == 3 || user.typeUser.id == 4) {
 		      	<li>
 		          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Plats</a>
 		        </li>
@@ -32,16 +37,18 @@
 		          <a aria-expanded="false" role="button" href="@routes.Supplier.index()"><i class="fa fa-shopping-cart imenu"></i> Fournisseurs</a>
 		        </li>
 		      }
+		      @if(user.typeUser.id != 3 || user.typeUser.id != 4){
 		        <li class="dropdown">
 		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Commandes<span
 		            class="caret"></span></a>
 		          <ul role="menu" class="dropdown-menu">
-		            <li><a href="@routes.OrderToHandle.index()">Commandes a traiter</a></li>
-		            <li><a href="@routes.OrderInProgress.index()">Commandes en cours</a></li>
-		            <li><a href="@routes.OrderValid.index()">Commandes traites</a></li>
-		            @if(user.typeUser.id != 1){<li><a href="@routes.OrderCommand.index()">Generer une commande</a></li>}
+		            @if(user.typeUser.id == 2){<li><a href="@routes.OrderCommand.index()">Commander</a></li>}
+		            @if(user.typeUser.id == 1 || user.typeUser.id == 5){<li><a href="@routes.OrderToHandle.index()">Commandes a traiter</a></li>}
+		            @if(user.typeUser.id == 1 || user.typeUser.id == 2){<li><a href="@routes.OrderInProgress.index()">Commandes en cours</a></li>}
+		            @if(user.typeUser.id == 1 || user.typeUser.id == 2 || user.typeUser.id == 5){<li><a href="@routes.OrderValid.index()">Commandes traitees</a></li>}
 		          </ul>
-		        </li>
+		         </li>
+		        }
 		        @if(user.typeUser.id == 1){
 		        <li>
 		          <a aria-expanded="false" role="button" href="@routes.Product.index()"><i class="fa fa-shopping-cart imenu"></i> Produits</a>
@@ -49,13 +56,21 @@
 		        <li>
 		          <a aria-expanded="false" role="button" href="@routes.Employee.index()"><i class="fa fa-users imenu"></i> Employees</a>
 		        </li>
-		        }
+		        <li class="dropdown">
+		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Parametres<span
+		            class="caret"></span></a>
+		          <ul role="menu" class="dropdown-menu">
+		            <li><a href="#">Unites</a></li>
+		            <li><a href="#">Types de produit</a></li>
+		          </ul>
+		        </li>
+		        }  
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @user.firstname @user.lastname<b class="caret"></b></a>
 		            <ul class="dropdown-menu">
-		                <li><a href="@controllers.account.settings.routes.Index.index()"><i class="fa fa-wrench"></i> @Messages("settings")</a></li>
+		                <li><a href="@controllers.account.settings.routes.Index.index()"><i class="fa fa-wrench"></i> @Messages("Account settings")</a></li>
 		                <li><a href="@routes.Application.logout()"><i class="fa fa-power-off"></i> @Messages("logout")</a></li>
 		            </ul>
 		        </li>
