@@ -1,0 +1,52 @@
+@import helper._
+
+@(user: User, form: Form[models.Meals])
+@main(user) {
+
+
+<div class="wrapper wrapper-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h3>Ajouter un plat</h3>
+					</div>
+
+					@helper.form(action=routes.Meal.saveMeal) {
+					<div class="ibox-content">
+					 @if(form.hasGlobalErrors) {
+				      <p class="error">
+				           @form.globalError.message
+				         Erreur !
+				      </p>
+				  }
+					<fieldset>
+					@select(
+					        form("typeMeal.id"),
+					        options = TypeMeal.selectTypeMeal.toSeq,
+					        '_default -> "Choose One", 
+					        '_label -> "Type",     
+					        'class -> "form-control "   
+					        )
+					
+					@inputText(   
+								form("name"), 
+							    '_label -> "Nom",
+							    'class -> "form-control input-lg"
+							   )
+				<input type="hidden" name="store.id" value="@user.store.id" />				   
+					</fieldset>
+							<div class="button text-center">
+								<button type="submit" class="btn btn-primary btn-lg active">Ajouter un produit</button>
+							</div>
+}
+	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	}

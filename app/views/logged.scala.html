@@ -20,8 +20,15 @@
 		        </li>
 		      }
 		      @if(user.typeUser.id == 2) {
-		      	<li>
-		          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Plats</a>
+		      	<li class="dropdown">
+		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Plats<span
+		            class="caret"></span></a>
+		          <ul role="menu" class="dropdown-menu">
+		            <li><a href="@routes.Meal.meal(1)">Entrée</a></li>
+		            <li><a href="@routes.Meal.meal(2)">Plats principaux</a></li>
+		            <li><a href="@routes.Meal.meal(3)">Desserts</a></li>
+		            <li><a href="@routes.Meal.addMeal()">Ajouter un plat</a></li>
+		           </ul> 
 		        </li>
 		      }
 		      @if(user.typeUser.id == 1) {

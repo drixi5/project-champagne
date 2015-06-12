@@ -30,7 +30,12 @@
 		            </thead>
 		            <tbody>
 		            @for(stock <- stocks){	
-			            <tr>
+		            @if(stock.store.id == user.store.id){
+			          <tr class= @if(stock.quantity <= stock.threshold_min) {"danger" } else { 
+			          @if(stock.quantity < stock.threshold_min*1.5) { "warning" } else { "success" }
+			          }>
+			         
+			         
 			              <td>@stock.product.name</td>
 			              <td>@stock.product.typeProduct.name</td>
 			              <td>
@@ -70,6 +75,7 @@
                     	  
                     	  </td>		
 			            </tr>
+			             }
 			            }
 		            </tbody>
 		          </table>

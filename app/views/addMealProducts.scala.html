@@ -1,0 +1,119 @@
+
+
+@import helper._
+
+
+@(user: User, form: Form[models.MealsProducts], meal : Meals, mealProd : java.util.List[models.MealsProducts], stock : java.util.List[models.StoresProducts])
+@main(user) {
+<!-- PROBLEME JS JARRIVE PAS A SAUVEGARDER TOUS LES PRODUITS, IL Y A QUE LE PREMIER QUI SE SAUVERGARDE DANS LA BDD VOIR AVEC XAV 
+<script type="text/javascript" >
+$(document).ready(function(){
+	   $(":input[name='add']").click(function () {
+	   $("div[id='prod']:last").clone(true).insertAfter("div[id='prod']:last");
+	   });
+	});
+    </script>
+-->
+
+
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Ajouter un produit : @meal.name</h3>
+		      </div>
+				 @helper.form(action=routes.Meal.saveMealProduct(meal.id), 'class -> "form-horizontal ") { 
+
+				<div class="ibox-content">
+		
+				  @if(form.hasGlobalErrors) {
+				      <p class="error">
+				           @form.globalError.message
+				         Erreur !
+				      </p>
+				  }
+				
+					 <fieldset> 
+					<div class="form-group">	
+						@select(
+						        form("product.id"),
+						        options = Products.selectProducts2(user.store.id).toSeq,
+						        '_default -> "Choose One", 
+						        '_label -> "Produit",     
+						        'class -> "form-control" 
+	     					  )	
+					</div><br/>	
+					
+					<div class="form-group">	
+						@inputText(   
+									form("quantity"), 
+								    '_label -> "Quantity",
+								    'class -> "form-control input-lg"  
+								   )    
+					</div><br/>				   
+					<input type="hidden" name="meal.id" value="@meal.id" />
+					</fieldset>	
+						<div class="button text-center">
+							<button type="submit" class="btn btn-primary btn-lg active">Continuer</button>
+							<input  type="submit" class="btn btn-primary btn-lg active" value="Valider" />
+						</div>
+				</div>
+				 }
+				 
+				 
+				 <h4>Produits ajoutées</h4>
+				 <div class="ibox-content">
+		        <div class="table-responsive">
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Produits</th>
+		              <th>Quantités</th>
+		            </tr>
+		            </thead>
+		            <tbody>
+					<tr>
+						<td>			
+						@for(mealProd <- mealProd){
+			              @if(mealProd.meal.id ==meal.id){
+			               @mealProd.product.name <br/>
+							}
+							}
+							</td>
+							<td>
+							 @for(mealProd <- mealProd){
+			              @if(mealProd.meal.id ==meal.id){
+							@mealProd.quantity 
+							@for(stock <- stock){
+							@if(stock.product.id == mealProd.product.id){
+							@stock.unit.name
+							}
+							}
+							<br/>
+							}
+							}
+										<td>
+											<button class="btn btn-custom btn-s" title="Modifier">
+												<i class="fa fa-cog"></i>
+											</button>
+											<button class="btn btn-custom btn-s" title="Supprimer">
+												<i class="fa fa-trash-o"></i>
+											</button>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>	
+					</div>
+					
+			 </div>
+			 
+		  </div>
+		</div>
+	  </div>
+</div>	      
+
+}

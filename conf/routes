@@ -6,10 +6,10 @@
 GET     /                           controllers.Application.index()
 GET     /dashboard                  controllers.Dashboard.index()
 GET		/addProductStock			controllers.Dashboard.viewAddPStock()
-POST 	/dashboard					controllers.Dashboard.addProductStock()
+POST 	/dashboard                  controllers.Dashboard.addProductStock()
 GET 	/dashboard/:id/edit			controllers.Dashboard.edit(id: Long)
-POST    /dashboard/:id/add        	controllers.Dashboard.modifyAdd(id: Long)
-POST    /dashboard/:id/minus        controllers.Dashboard.modifyMinus(id: Long)
+POST    /dashboard/:id/modifAdd     controllers.Dashboard.modifyAdd(id: Long)
+POST    /dashboard/:id/modifMinus   controllers.Dashboard.modifyMinus(id: Long)
 GET    /dashboard/:id		  	    controllers.Dashboard.destroy(id: Long)
 GET 	/dashboard/:id/end			controllers.Dashboard.endModify(id: Long)
 
@@ -71,6 +71,15 @@ GET		/products					controllers.Product.getProducts()
 GET     /employee                  	controllers.Employee.index()
 #POST    /employee					controllers.Employee.save()
 GET     /employee/addEmployee       controllers.Employee.addEmployee()
+
+#Meal
+GET    /meal/:id					controllers.Meal.meal(id : Long)
+POST   /meal/:id/decrement		    controllers.Meal.decrement(id: Long, id2 : Long)
+GET    /addMeal						controllers.Meal.addMeal()
+POST   /addMealProd           	    controllers.Meal.saveMeal()
+GET    /addMealProd/:id		        controllers.Meal.addMealProduct(id : Long)
+POST   /addMealProd/save/:id        controllers.Meal.saveMealProduct(id : Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,95 @@
+@import helper._
+
+@(user: User, mealProd : java.util.List[models.MealsProducts], meal : java.util.List[models.Meals] , stock : java.util.List[models.StoresProducts], quantityForm: Form[Meal.Quantity], typeMeal : TypeMeal)
+
+@main(user) {
+
+    <div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		      @if(typeMeal.id == 1){
+		      	<h3>Entrées</h3>
+		      	}else{ 
+		      	@if(typeMeal.id == 2){	
+		        <h3>Plats principaux</h3>
+		        } else{
+		       	<h3>Desserts</h3>
+		    	}} 
+		      </div>
+		      <div class="ibox-content">
+		        <div class="table-responsive">
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Nom</th>
+		              <th>Produits</th>
+		              <th>Quantités</th>
+
+		            
+		            </tr>
+		            </thead>
+		            <tbody>
+		            
+		             @for(meal <- meal){	
+		            @if(meal.store.id == user.store.id){
+		            @if(meal.typeMeal.id== typeMeal.id){
+			          <tr>
+			          
+			              <td>@meal.name</td>
+			              <td>
+			              @for(mealProd <- mealProd){
+			              @if(mealProd.meal.id ==meal.id){
+			               @mealProd.product.name <br/>
+							}
+							}
+							</td>
+							<td>
+							 @for(mealProd <- mealProd){
+			              @if(mealProd.meal.id ==meal.id){
+							@mealProd.quantity 
+							@for(stock <- stock){
+							@if(stock.product.id == mealProd.product.id){
+							@stock.unit.name
+							}
+							}
+							<br/>
+							}
+							}
+							</td>
+							
+							<td>		
+					@form(routes.Meal.decrement(meal.id, typeMeal.id), 'class -> "form") {
+					<input class="input-mini" type="text" name="quantity" placeholder=0>
+			        <button type="submit" class="btn btn-sm btn-default">
+			        <span class="glyphicon glyphicon-minus"></span></button>
+			        }
+
+							</td>
+			              <td>
+			              <a href="">
+			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              </a> 	
+			              <a href="">
+                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  </a> 
+                    	  
+                    	  </td>		
+			            </tr>
+			            	}
+			             }
+			            }
+		            </tbody>
+		          </table>
+		        </div>
+		
+		      </div>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+
+}

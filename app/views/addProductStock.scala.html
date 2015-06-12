@@ -22,7 +22,7 @@
 
 @select(
         form("product.id"),
-        options = Products.selectProducts.toSeq,
+        options = Products.selectProducts(user.store.id).toSeq,
         '_default -> "Choose One", 
         '_label -> "Nom -Espèce",     
         'class -> "form-control "   
@@ -52,7 +52,9 @@
 			form("threshold_max"), 
 		    '_label -> "Seuil Max",
 		    'class -> "form-control input-lg"
-		   )   		    
+		   )   
+
+<input type="hidden" name="store.id" value="@user.store.id" />		   		    
 
 </fieldset>
 
