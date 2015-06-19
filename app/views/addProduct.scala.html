@@ -15,7 +15,7 @@
 
 					@helper.form(action=routes.Product.saveProduct) {
 					<div class="ibox-content">
-					
+<form data-toggle="validator" role="form">
 					<fieldset>
 					
 					@inputText(   
@@ -34,7 +34,7 @@
 					</fieldset>
 							<div class="button text-center">
 								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
-								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
+								<button type="submit" onclick="return validateMyForm()" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 }
 						
