@@ -35,7 +35,7 @@
 			              <td>@User.typeUser.name</td>
 			              <td>
 			              @if(User.typeUser.id != 1) {
-			              	<a href="#">
+			              	<a href="@routes.Employee.edit(User.id)">
 			              	  <button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
 			              	</a>
 			              	<a href="@routes.Employee.destroy(User.id)">
