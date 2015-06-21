@@ -1,0 +1,87 @@
+@import helper._
+
+@(user: User, stocks : java.util.List[models.SuppliersProducts], quantityForm: Form[StockSuppliers.Quantity])
+
+@main(user) {
+
+    <div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Stocks</h3>
+		      </div>
+		      <div class="ibox-content">
+		        <div class="table-responsive">
+		         <a class="add-link" href="@routes.StockSuppliers.viewAddPStock()">
+     				<button class="btn btn-custom add" ><i class="fa fa-plus"></i> Ajouter un produit</button>
+     			  </a>
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Nom - Espéce</th>
+		              <th>Type</th>
+		              <th>Quantité</th>
+		      
+		            
+		            </tr>
+		            </thead>
+		            <tbody>
+		            @for(stock <- stocks){	
+		            @if(stock.supplier.id == user.supplier.id){
+			          <tr>
+			         
+			         
+			              <td>@stock.product.name</td>
+			              <td>@stock.product.typeProduct.name</td>
+			              <td>
+			              @stock.quantity
+			              @stock.unit.name
+							
+			              @if(stock.edit == false ){
+			              }else{ 
+			              @form(routes.StockSuppliers.modifyAdd(stock.id), 'class -> "form") {
+			              <br/>
+			              <input class="input-mini" type="text" name="quantity" placeholder=0>
+			              <button type="submit" class="btn btn-sm btn-default">
+			              <span class="glyphicon glyphicon-plus"></span></button>
+			              }
+			               @form(routes.StockSuppliers.modifyMinus(stock.id), 'class -> "form") {
+			              <input class="input-mini" type="text" name="quantity" placeholder=0>
+			              <button type="submit" class="btn btn-sm btn-default">
+			              <span class="glyphicon glyphicon-minus"></span></button>
+			       		     }
+			              } 
+			              </td>
+			              
+			              <td>
+			              @if(stock.edit == false ){
+			              <a href="@routes.StockSuppliers.edit(stock.id)">
+			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              </a> 	
+			              <a href="@routes.StockSuppliers.destroy(stock.id)">
+                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  </a> 
+                    	  }else{
+                    	   <a href="@routes.StockSuppliers.endModify(stock.id)">
+                    	  	<button class="btn btn-custom btn-s"><i class="fa fa-pencil"></i></button>
+                    	  	 </a> 
+                    	  }
+                    	  
+                    	  </td>		
+			            </tr>
+			             }
+			            }
+		            </tbody>
+		          </table>
+		        </div>
+		
+		      </div>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+
+}

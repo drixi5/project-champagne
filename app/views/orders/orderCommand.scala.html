@@ -1,5 +1,5 @@
 @import helper._
-@(user: User, stocks : java.util.List[models.StoresProducts])
+@(user: User, stocks : java.util.List[models.StoresProducts],  form: Form[models.Orders])
 
 @main(user) {
 
@@ -12,34 +12,51 @@
 		        <h3>Generer une commande</h3>
 		      </div>
 		      <div class="ibox-content">
-		        <div class="table-responsive">
+		        
+  @if(stocks.size == 0){
+  Vous n'avez aucun produit dans vos stock
+  }		else{        
+  				<div class="table-responsive">
 		          <table class="table table-striped">
 		            <thead>
 		            <tr>
-		              <th></th>
-		              <th>Nom - Especes</th>
-		              <th>Type</th>
-		              <th>Quantite</th>
-		              <th>Unite</th>
+		              
+		              <th>Type de produit</th>
+		              <th>Nom</th>
+		              <th>Quantité</th>
+		              <th>Commander</th>
 		            </tr>
 		            </thead>
 		            <tbody>
+    
 		            @for(stock <- stocks){	
-			            <tr>
-			              <td><input type="checkbox" class="checkbox" /></td>
-			              <td>@stock.product.name</td>
+		           
+		            <fieldset>
+			            <tr class= @if(stock.quantity <= stock.threshold_min) {"danger" } else { 
+			          @if(stock.quantity < stock.threshold_min*1.5) { "warning" } else { "success" }
+			          }>    
+			          
+			          @helper.form(action=routes.OrderCommand.command(stock.store.id), 'class -> "form-horizontal "){
 			              <td>@stock.product.typeProduct.name</td>
-			              <td><input type="text" name="" value=@stock.quantity></td>  
-			              <td>@stock.unit.name</td>
-
+			              <td>@stock.product.name</td>
+			              <td><input type="text" name="quantity" placeholder=@stock.quantity>   
+			              @stock.unit.name</td>
+			              <td> 
+			        <input type="hidden" name="storesProducts.id" value="@stock.id" />	
+			        <input type="hidden" name="store.id" value="@user.store.id" />	
+			        <input type="hidden" name="status" value="1" />
+			        <input type="hidden" name="creationDate" value="@Calendar.getInstance().getTime().format("dd-MM-yyyy")" />	
+					<button class="btn btn-xs btn-danger">Commander</button>
+				 		</td>
+				 		}
 			            </tr>
+			            </fieldset>
 			            }
 		            </tbody>
 		          </table>
-		          
-		          <div class="button text-center">
-					<button class="btn btn-primary btn-lg active">Valider</button>
-				  </div>
+		        
+		         
+				  }
 		        </div>
 		        </div>
 		        </div>

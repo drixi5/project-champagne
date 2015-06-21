@@ -35,8 +35,6 @@ public class Suppliers extends Model{
 	@Formats.NonEmpty
 	public String ville;
 	
-	@OneToOne
-	public User user;
 	
 	
 	public static  Model.Finder<Long, Suppliers> find = new  Model.Finder<Long, Suppliers>(Long.class, Suppliers.class);

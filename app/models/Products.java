@@ -68,14 +68,41 @@ public class Products extends Model {
     public static Model.Finder<Long, Products> find = new Model.Finder<Long, Products>(Long.class, Products.class);
     
     
-//Select product for Stock (dont take one if it is already in the stock by id_store)
-    public static HashMap<String, String> selectProducts(Long id)  {
+//Select product for StockStores(dont take one if it is already in the stock by id_store)
+    public static HashMap<String, String> selectProductsStore(Long id)  {
         HashMap<String, String> output = new HashMap<String, String>();
         
         List<StoresProducts> stock = StoresProducts.find.all();
         List<Long> stockId = new ArrayList<>();
         for(StoresProducts sp : stock){
         	if(sp.store.id==id){
+        	//Logger.debug(sp.store.id+"store");	
+        	stockId.add(sp.product.id);
+        //	Logger.debug(sp.product.id+"produit");
+        	}
+        }
+        
+        for(Products p : Products.find.all())   {
+        		if(stockId.contains(p.id)){
+        			
+        		}
+        		else{
+        			output.put(p.id.toString(), p.name) ;
+        		}
+        		
+        }
+        return output;
+    }
+    
+    
+  //Select product for StockSuppliers (dont take one if it is already in the stock by id_store)
+    public static HashMap<String, String> selectProductsSupplier(Long id)  {
+        HashMap<String, String> output = new HashMap<String, String>();
+        
+        List<SuppliersProducts> stock = SuppliersProducts.find.all();
+        List<Long> stockId = new ArrayList<>();
+        for(SuppliersProducts sp : stock){
+        	if(sp.supplier.id==id){
         	//Logger.debug(sp.store.id+"store");	
         	stockId.add(sp.product.id);
         //	Logger.debug(sp.product.id+"produit");

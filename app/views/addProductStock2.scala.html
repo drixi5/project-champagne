@@ -1,7 +1,7 @@
 @import helper._
 
 
-@(user: User, form: Form[models.StoresProducts])
+@(user: User, form: Form[models.SuppliersProducts])
 @main(user) {
 
 
@@ -14,7 +14,7 @@
 		        <h3>Ajouter un produit au stock</h3>
 		      </div>
 
-@helper.form(action=routes.Dashboard.addProductStock) {
+@helper.form(action=routes.StockSuppliers.addProductStock) {
 <div class="ibox-content">
 
 <fieldset>
@@ -22,7 +22,7 @@
 
 @select(
         form("product.id"),
-        options = Products.selectProductsStore(user.store.id).toSeq,
+        options = Products.selectProductsSupplier(user.supplier.id).toSeq,
         '_default -> "Choose One", 
         '_label -> "Nom -Espèce",     
         'class -> "form-control "   
@@ -41,20 +41,9 @@
         '_label -> "Unité",     
         'class -> "form-control "   
         )							
+ 
 
-@inputText(   
-			form("threshold_min"), 
-		    '_label -> "Seuil Min",
-		    'class -> "form-control input-lg"
-		   )  
-
-@inputText(   
-			form("threshold_max"), 
-		    '_label -> "Seuil Max",
-		    'class -> "form-control input-lg"
-		   )   
-
-<input type="hidden" name="store.id" value="@user.store.id" />		   		    
+<input type="hidden" name="supplier.id" value="@user.supplier.id" />		   		    
 
 </fieldset>
 

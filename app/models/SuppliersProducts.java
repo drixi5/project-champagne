@@ -19,8 +19,8 @@ public class SuppliersProducts extends Model{
 	@ManyToOne 
     public Products product ;
 	
-	//@ManyToOne
-   // public Suppliers supplier ;
+	@ManyToOne
+    public Suppliers supplier ;
 
 	@ManyToOne 
     public Unit unit;
@@ -29,13 +29,9 @@ public class SuppliersProducts extends Model{
     @Formats.NonEmpty
     public int quantity;
 
-    @Constraints.Required
-    @Formats.NonEmpty
-    public int threshold_max;
     
-    @Constraints.Required
     @Formats.NonEmpty
-    public int threshold_min;
+    public Boolean edit = false;
     
     //@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
     //public Date dateCreation;

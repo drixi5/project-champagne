@@ -2,15 +2,15 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# Home page 
 GET     /                           controllers.Application.index()
 GET     /dashboard                  controllers.Dashboard.index()
-GET		/addProductStock			controllers.Dashboard.viewAddPStock()
+GET		/addProductStockStores		controllers.Dashboard.viewAddPStock()
 POST 	/dashboard                  controllers.Dashboard.addProductStock()
 GET 	/dashboard/:id/edit			controllers.Dashboard.edit(id: Long)
 POST    /dashboard/:id/modifAdd     controllers.Dashboard.modifyAdd(id: Long)
 POST    /dashboard/:id/modifMinus   controllers.Dashboard.modifyMinus(id: Long)
-GET    /dashboard/:id		  	    controllers.Dashboard.destroy(id: Long)
+GET     /dashboard/:id		  	    controllers.Dashboard.destroy(id: Long)
 GET 	/dashboard/:id/end			controllers.Dashboard.endModify(id: Long)
 
 POST    /login                      controllers.Application.authenticate()
@@ -45,7 +45,7 @@ GET     /store/addStore             controllers.Store.viewAddStore()
 POST    /store						controllers.Store.addStore()
 GET     /store/:id/edit   			controllers.Store.edit(id: Long)
 POST    /store/:id        			controllers.Store.update(id: Long)
-GET  /store/:id		  			    controllers.Store.destroy(id: Long)
+GET    /store/:id		  			controllers.Store.destroy(id: Long)
 
 #POST    /store/addAdmin			controllers.Store.addStore()
 #POST    /store						controllers.Store.addAdmin()
@@ -55,11 +55,16 @@ GET     /supplier                  	controllers.Supplier.index()
 GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
 
 # Orders
-GET     /ordersProgress             controllers.OrderInProgress.index()
-GET     /ordersValid                controllers.OrderValid.index()
-GET     /ordersHandle               controllers.OrderToHandle.index()
-GET     /ordersCommand			    controllers.OrderCommand.index()
-
+GET     /ordersProgress/            controllers.OrderCommand.orderInProgress(id : Long)
+GET 	/ordersProgress/:id     	controllers.OrderCommand.validReceipt(id : Long, id2 : Long, id3 : Long)
+GET     /ordersProgress/:id		  	controllers.OrderCommand.destroy(id: Long, id2 : Long)
+GET     /ordersValid                controllers.OrderCommand.orderValid(id : Long)
+GET     /ordersHandle/:id           controllers.OrderCommand.orderHandle(id : Long)
+GET 	/orderHandle/:id     		controllers.OrderCommand.validSend(id : Long, id2 : Long, id3 : Long)
+GET     /ordersCommand/:id			controllers.OrderCommand.orderCommand(id : Long)
+POST    /ordersCommand/:id			controllers.OrderCommand.command(id : Long)
+GET		/viewStore					controllers.OrderCommand.viewStore(id : Long)
+GET		/viewSupplier				controllers.OrderCommand.viewSupplier(id : Long)
 
 # Product
 GET     /product                  	controllers.Product.index()
@@ -79,6 +84,16 @@ GET    /addMeal						controllers.Meal.addMeal()
 POST   /addMealProd           	    controllers.Meal.saveMeal()
 GET    /addMealProd/:id		        controllers.Meal.addMealProduct(id : Long)
 POST   /addMealProd/save/:id        controllers.Meal.saveMealProduct(id : Long)
+
+#StockSupplier
+GET     /stockSupplier              	controllers.StockSuppliers.index()
+GET		/addProductStockSupplier		controllers.StockSuppliers.viewAddPStock()
+POST 	/stockSupplier                  controllers.StockSuppliers.addProductStock()
+GET 	/stockSupplier/:id/edit			controllers.StockSuppliers.edit(id: Long)
+POST    /stockSupplier/:id/modifAdd     controllers.StockSuppliers.modifyAdd(id: Long)
+POST    /stockSupplier/:id/modifMinus   controllers.StockSuppliers.modifyMinus(id: Long)
+GET     /stockSupplier/:id		  	    controllers.StockSuppliers.destroy(id: Long)
+GET 	/stockSupplier/:id/end			controllers.StockSuppliers.endModify(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path
