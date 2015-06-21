@@ -1,12 +1,22 @@
 package models;
 
+import java.util.HashMap;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.i18n.Messages;
+
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+
+import java.util.Date;
+
 
 @Entity
 public class Suppliers extends Model{
@@ -16,10 +26,6 @@ public class Suppliers extends Model{
 	@Constraints.Required
 	@Formats.NonEmpty
 	public String name;
-	
-	@Constraints.Required
-	@Formats.NonEmpty
-	public String email;
 	
 	@Constraints.Required
 	@Formats.NonEmpty
@@ -35,9 +41,36 @@ public class Suppliers extends Model{
 	@Formats.NonEmpty
 	public String ville;
 	
-	@OneToOne
+	@ManyToOne
 	public User user;
 	
 	
-	public static  Model.Finder<Long, Suppliers> find = new  Model.Finder<Long, Suppliers>(Long.class, Suppliers.class);
+	
+	 public String validate(){
+		 if ((name == null) || (adress1 == null) || (codePostal == 0) || (ville == null)) {
+                return Messages.get("Il faut remplir tous les champs obligatoires");
+            }
+            return null;
+        }
+	
+
+	 public static Model.Finder<Long, Suppliers> find = new Model.Finder<Long, Suppliers>(Long.class,Suppliers.class);
+
+	
+	    
+	 public static HashMap<String, String> selectSuppliers()  {
+	        HashMap<String, String> output = new HashMap<String, String>();
+
+	        for(Suppliers s : Suppliers.find.all())   {
+
+	        			output.put(s.id.toString(), s.name) ;
+	        }
+	        return output;
+	    }
+
+
+
+
+	    
+	
 }

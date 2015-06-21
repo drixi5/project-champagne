@@ -53,6 +53,10 @@ GET  /store/:id		  			    controllers.Store.destroy(id: Long)
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
 GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
+POST 	/supplier					controllers.Supplier.saveSupplier()
+GET		/supplier					controllers.Supplier.getSupplier()
+
+
 
 # Orders
 GET     /ordersProgress             controllers.OrderInProgress.index()

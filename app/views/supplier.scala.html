@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, Suppliers : java.util.List[models.Suppliers])
 
 @main(user) {
 
@@ -19,25 +19,36 @@
 		            <thead>
 		            <tr>
 		              <th>Nom</th>
-		              <th>Mail</th>
-		              <th>Adresse</th>
+		              <th>Adresse1</th>
+		               <th>Adresse2</th>
 		              <th>Code Postal</th>
 		              <th>Ville</th>
-		              <th></th>
 		            </tr>
 		            </thead>
 		            <tbody>
-			            <tr>
-			              <td>La plantation</td>
-			              <td>info@@laplantation.com</td>
-			              <td>35 rue de Mortenol</td>
-			              <td>36000</td>
-			              <td>Grenoble</td>
-			              <td>
-			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
-                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+			         
+			            
+			            
+		           @for(Suppliers <- Suppliers){
+			          <tr>
+			              <td>@Suppliers.name</td>
+			              <td>@Suppliers.adress1</td>
+			              <td>@Suppliers.adress2</td>
+			              <td>@Suppliers.codePostal</td>
+			              <td<@Suppliers.ville</td>		             
+			           
+			             <td>
+			             
+			              	<button class="btn btn-custom btn-s" title="Modifier"></button>
+			            
+			         
+                    	  	<button class="btn btn-custom btn-s" title="Supprimer"></button>
+                    		
                     	  </td>
-			            </tr>
+                    	  
+                    	  </tr>
+			            
+			          }
 		            </tbody>
 		          </table>
 		        </div>

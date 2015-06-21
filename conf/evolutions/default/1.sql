@@ -71,7 +71,6 @@ create table stores_products (
 create table suppliers (
   id                        bigint auto_increment not null,
   name                      varchar(255),
-  email                     varchar(255),
   adress1                   varchar(255),
   adress2                   varchar(255),
   code_postal               integer,
