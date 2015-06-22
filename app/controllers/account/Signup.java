@@ -2,6 +2,8 @@ package controllers.account;
 
 import controllers.Application;
 import models.User;
+import models.TypeUser;
+import models.Stores;
 import models.utils.AppException;
 import models.utils.Hash;
 import models.utils.Mail;

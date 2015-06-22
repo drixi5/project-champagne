@@ -66,11 +66,18 @@ GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
 POST 	/product					controllers.Product.saveProduct()
 GET		/products					controllers.Product.getProducts()
+GET		/drink						controllers.Drink.Drinks()
+GET		/drinkInc					controllers.Drink.Increment(id: Long)
+POST	/drinkInc					controllers.Drink.Increment(id: Long)
+GET 	/drinkDec					controllers.Drink.Decrement(id: Long)
+POST 	/drinkDec					controllers.Drink.Decrement(id: Long)
 
 #Employee
 GET     /employee                  	controllers.Employee.index()
-#POST    /employee					controllers.Employee.save()
 GET     /employee/addEmployee       controllers.Employee.addEmployee()
+#GET     /employee/edit/:id       	controllers.Employee.edit(id: Long)
+POST    /employee/:id       		controllers.Employee.update(id: Long)
+GET     /employee/:id       		controllers.Employee.destroy(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
