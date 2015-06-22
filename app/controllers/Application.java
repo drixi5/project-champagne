@@ -83,12 +83,12 @@ public class Application extends Controller {
             try {
                 user = User.authenticate(email, password);
             } catch (AppException e) {
-                return Messages.get("error.technical");
+                return Messages.get("Erreur technique");
             }
             if (user == null) {
-                return Messages.get("invalid.user.or.password");
+                return Messages.get("Login ou mot de passe invalide");
             } else if (!user.validated) {
-                return Messages.get("account.not.validated.check.mail");
+                return Messages.get("Votre compte n'a pas été validé. Veuillez vérifier vos mails.");
             }
             return null;
         }
@@ -168,7 +168,7 @@ public class Application extends Controller {
      */
     public static Result logout() {
         session().clear();
-        flash("success", Messages.get("youve.been.logged.out"));
+        flash("success", Messages.get("Vous avez été déconnecté"));
         return GO_HOME;
     }
 
