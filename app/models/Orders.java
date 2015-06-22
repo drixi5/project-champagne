@@ -23,7 +23,8 @@ public class Orders extends Model{
 	@Formats.NonEmpty
 	public int quantity;
 	
-	public int status ;
+	@ManyToOne
+	public OrderStatus status ;
 	    
 	@Formats.DateTime(pattern = "dd-MM-yyyy")
 	public Date creationDate;
@@ -45,4 +46,19 @@ public class Orders extends Model{
 	
 	public static Model.Finder<Long, Orders> find = new Model.Finder<Long, Orders>(Long.class, Orders.class);
 
+	
+	public Orders(){
+		this.quantity = 10;
+	}
+/*	
+	public void save(){
+		this.store.save();
+		this.storesProducts.save();
+		this.suppliersProducts.save();
+		this.supplier.save();
+		
+		this.save();
+	}
+	*/
+	
 }

@@ -57,13 +57,12 @@ $(document).ready(function(){
 					<input type="hidden" name="meal.id" value="@meal.id" />
 					</fieldset>	
 						<div class="button text-center">
-							<button type="submit" class="btn btn-primary btn-lg active">Continuer</button>
-							<input  type="submit" class="btn btn-primary btn-lg active" value="Valider" />
+							<input  type="submit" class="btn btn-primary btn-lg active" value="Continuer" />
 						</div>
 				</div>
 				 }
 				 
-				 
+	@if(mealProd.size != 0){			 
 				 <h4>Produits ajoutées</h4>
 				 <div class="ibox-content">
 		        <div class="table-responsive">
@@ -75,42 +74,34 @@ $(document).ready(function(){
 		            </tr>
 		            </thead>
 		            <tbody>
+		         	@for(mealProd <- mealProd){   
 					<tr>
-						<td>			
-						@for(mealProd <- mealProd){
-			              @if(mealProd.meal.id ==meal.id){
-			               @mealProd.product.name <br/>
-							}
-							}
-							</td>
-							<td>
-							 @for(mealProd <- mealProd){
-			              @if(mealProd.meal.id ==meal.id){
+						<td>@mealProd.product.name </td>
+						<td>
 							@mealProd.quantity 
 							@for(stock <- stock){
 							@if(stock.product.id == mealProd.product.id){
 							@stock.unit.name
-							}
-							}
-							<br/>
-							}
-							}
-										<td>
-											<button class="btn btn-custom btn-s" title="Modifier">
-												<i class="fa fa-cog"></i>
-											</button>
-											<button class="btn btn-custom btn-s" title="Supprimer">
-												<i class="fa fa-trash-o"></i>
-											</button>
-										</td>
-									</tr>
+							}}
+						<td>
+						<a href="@routes.Meal.destroyAddProduct(meal.id, mealProd.id)">
+							<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+						</a>	
+						</td>					
+					</tr>
+					}
 									
 								</tbody>
-							</table>	
+							</table>
+							<div class="button text-center">
+							<a href="@routes.Meal.meal(meal.typeMeal.id)">
+							<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
+							</a>
+							</div>	
 					</div>
 					
 			 </div>
-			 
+			 }
 		  </div>
 		</div>
 	  </div>

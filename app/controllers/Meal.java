@@ -8,6 +8,7 @@ import java.util.List;
 import controllers.Dashboard.Quantity;
 import models.Meals;
 import models.MealsProducts;
+import models.Orders;
 import models.StoresProducts;
 import models.TypeMeal;
 import models.User;
@@ -55,9 +56,17 @@ public class Meal extends Controller {
 final static Form<MealsProducts> mealProdForm = form(MealsProducts.class); 
 	 
  public static Result addMealProduct(Long id){
-
-		 return ok(addMealProducts.render(User.findByEmail(request().username()),mealProdForm, Meals.find.byId(id), MealsProducts.find.orderBy("id asc").findList(), StoresProducts.find.orderBy("id asc").findList()));
+	 	Meals meal = Meals.find.byId(id);
+		 return ok(addMealProducts.render(User.findByEmail(request().username()),mealProdForm, meal, MealsProducts.find.orderBy("id asc").where().eq("meal_id", meal.id ).findList(), StoresProducts.find.orderBy("id asc").findList()));
 	 }
+ 
+ public static Result destroyAddProduct(Long id, Long id2){
+	 MealsProducts mealProduct = MealsProducts.find.byId(id2);
+	 Logger.debug(mealProduct.id+" product a supprimer");
+     mealProduct.delete();
+     return addMealProduct(id);
+	 
+ }
 
 
  public static Result saveMealProduct(Long id){
@@ -86,7 +95,7 @@ final static Form<MealsProducts> mealProdForm = form(MealsProducts.class);
 
 	final static Form<Quantity> quantityForm = form(Quantity.class);
  
- //page view dessert
+//page view dessert
 //page view entree
 //page view meal
 public static Result meal(Long id) {

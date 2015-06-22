@@ -32,7 +32,7 @@
 		            @for(stock <- stocks){	
 		            @if(stock.store.id == user.store.id){
 			          <tr class= @if(stock.quantity <= stock.threshold_min) {"danger" } else { 
-			          @if(stock.quantity < stock.threshold_min*1.5) { "warning" } else { "success" }
+			          @if(stock.quantity < stock.threshold_min*2) { "warning" } else { "success" }
 			          }>
 			         
 			         
