@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, suppliers : java.util.List[models.Suppliers])
 
 @main(user) {
 
@@ -27,17 +27,23 @@
 		            </tr>
 		            </thead>
 		            <tbody>
+					@for(suppliers <- suppliers){		          
 			            <tr>
-			              <td>La plantation</td>
-			              <td>info@@laplantation.com</td>
-			              <td>35 rue de Mortenol</td>
-			              <td>36000</td>
-			              <td>Grenoble</td>
+			              <td>@suppliers.name</td>
+			              <td>@suppliers.email</td>
+			              <td>@suppliers.adress1</td>
+			              <td>@suppliers.codePostal</td>
+			              <td>@suppliers.ville</td>		             
 			              <td>
+			              <a href="@routes.Supplier.edit(suppliers.id)">
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              </a> 	
+			              <a href="@routes.Supplier.destroy(suppliers.id)">
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  </a> 		
                     	  </td>
 			            </tr>
+ 						}	
 		            </tbody>
 		          </table>
 		        </div>

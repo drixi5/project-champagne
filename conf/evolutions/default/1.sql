@@ -76,7 +76,6 @@ create table suppliers (
   adress2                   varchar(255),
   code_postal               integer,
   ville                     varchar(255),
-  user_id                   bigint,
   constraint pk_suppliers primary key (id))
 ;
 
@@ -149,16 +148,14 @@ alter table stores_products add constraint fk_stores_products_product_7 foreign 
 create index ix_stores_products_product_7 on stores_products (product_id);
 alter table stores_products add constraint fk_stores_products_unit_8 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
 create index ix_stores_products_unit_8 on stores_products (unit_id);
-alter table suppliers add constraint fk_suppliers_user_9 foreign key (user_id) references user (id) on delete restrict on update restrict;
-create index ix_suppliers_user_9 on suppliers (user_id);
-alter table suppliers_products add constraint fk_suppliers_products_product_10 foreign key (product_id) references products (id) on delete restrict on update restrict;
-create index ix_suppliers_products_product_10 on suppliers_products (product_id);
-alter table suppliers_products add constraint fk_suppliers_products_unit_11 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
-create index ix_suppliers_products_unit_11 on suppliers_products (unit_id);
-alter table user add constraint fk_user_typeUser_12 foreign key (type_user_id) references type_user (id) on delete restrict on update restrict;
-create index ix_user_typeUser_12 on user (type_user_id);
-alter table user add constraint fk_user_store_13 foreign key (store_id) references stores (id) on delete restrict on update restrict;
-create index ix_user_store_13 on user (store_id);
+alter table suppliers_products add constraint fk_suppliers_products_product_9 foreign key (product_id) references products (id) on delete restrict on update restrict;
+create index ix_suppliers_products_product_9 on suppliers_products (product_id);
+alter table suppliers_products add constraint fk_suppliers_products_unit_10 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
+create index ix_suppliers_products_unit_10 on suppliers_products (unit_id);
+alter table user add constraint fk_user_typeUser_11 foreign key (type_user_id) references type_user (id) on delete restrict on update restrict;
+create index ix_user_typeUser_11 on user (type_user_id);
+alter table user add constraint fk_user_store_12 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_user_store_12 on user (store_id);
 
 
 

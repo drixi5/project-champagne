@@ -1,0 +1,6 @@
+@(user: User, form: Form[models.Suppliers], supplier: models.Suppliers)
+
+@import models.Suppliers
+
+
+    @addSupplier(user, form, supplier, routes.Supplier.update(supplier.id))
