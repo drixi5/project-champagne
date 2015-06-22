@@ -53,6 +53,9 @@ GET  /store/:id		  			    controllers.Store.destroy(id: Long)
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
 GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
+GET     /supplier/:id/edit   		controllers.Supplier.edit(id: Long)
+POST    /supplier/:id        		controllers.Supplier.update(id: Long)
+GET  /supplier/:id		  			controllers.Supplier.destroy(id: Long)
 
 # Orders
 GET     /ordersProgress             controllers.OrderInProgress.index()
@@ -66,6 +69,8 @@ GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
 POST 	/product					controllers.Product.saveProduct()
 GET		/products					controllers.Product.getProducts()
+GET     /product/:id/edit   		controllers.Product.edit(id: Long)
+POST    /product/:id        		controllers.Product.update(id: Long)
 GET		/drink						controllers.Drink.Drinks()
 GET		/drinkInc					controllers.Drink.Increment(id: Long)
 POST	/drinkInc					controllers.Drink.Increment(id: Long)

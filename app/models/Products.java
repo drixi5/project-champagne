@@ -5,19 +5,11 @@ import play.db.ebean.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import models.utils.AppException;
-import models.utils.Hash;
-import models.StoresProducts;
-
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import play.data.format.Formats;
-import play.i18n.Messages;
-
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 
-import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -75,4 +67,11 @@ public class Products extends Model {
         }
         return output;
     }
+    
+    /*public Products(String name, TypeProduct typeProduct) {
+        this.name = name;
+        this.typeProduct = typeProduct;
+
+    }*/
+    
 }

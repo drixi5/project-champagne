@@ -1,7 +1,7 @@
-@(user: User, Products : java.util.List[models.Products])
+@(user: User, products : java.util.List[models.Products])
 
 @main(user){
-	@Products.size Product@(if(Products.size !=1) "s")
+	
 
 <div class="wrapper wrapper-content">
       <div class="container">
@@ -25,13 +25,14 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            	@for(Product <- Products){	
+		            	@for(product <- products){	
 			            <tr>
-			              <td>@Product.name</td>
-			              <td>@Product.typeProduct.name</td>
-			              <td>
+			              <td>@product.name</td>
+			              <td>@product.typeProduct.name</td>
+ 						  <td>
+			              <a href="@routes.Product.edit(product.id)">
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
-                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+			              </a> 			
                     	  </td>
 			            </tr>
 			            }
