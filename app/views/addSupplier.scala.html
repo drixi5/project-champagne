@@ -1,4 +1,7 @@
-@(user: User) @main(user) {
+@import helper._
+
+@(user: User, form: Form[models.Suppliers], store : models.Suppliers, actionRoute : play.api.mvc.Call)) 
+@main(user) {
 
 <div class="wrapper wrapper-content">
 	<div class="container">
@@ -6,79 +9,103 @@
 			<div class="col-lg-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h3>Creation d'un fournisseur</h3>
+						<h3>Ajout d'un fournisseur</h3>
 					</div>
-					<div class="ibox-content">
+					@helper.form(action=actionRoute, 'class -> "form-horizontal ") { 
+				<div class="ibox-content">
+		
+				  @if(form.hasGlobalErrors) {
+				      <p class="error">
+				           @form.globalError.message
+				         Erreur !
+				      </p>
+				  }
+						<fieldset> 
+					  <div class="form-group">
+						
+						@inputText(   
+								form("name"), 
+		    					'_label -> "Nom du fournisseur", 
+		    					'_div_class -> "col-sm-10",
+		   						'class -> "form-control",
+		   						'value -> "store.name",
+		   						'placeholder -> "Name"
+		   						)   
+						</div><br/>	
+						<div class="form-group">
+						
 
-						<form method="post" class="form-horizontal">
-							<div class="form-group">
-							  <label class="col-sm-2 control-label">Nom du fournisseur</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="name">
-							  </div>
-						    </div>
-						    <div class="hr-line-dashed"></div>
-						    <div class="form-group">
-							  <label class="col-sm-2 control-label">Adresse 1</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="address1">
-							  </div>
-						    </div><br/>
-						    <div class="form-group">
-							  <label class="col-sm-2 control-label">Adresse 2</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="address2">
-							  </div>
-						    </div><br/>
-						    <div class="form-group">
-							  <label class="col-sm-2 control-label">Code Postal</label>
-							  <div class="col-sm-4">
-							    <input class="form-control" type="text" name="post_code">
-							  </div>
-							  <label class="col-sm-2 control-label">Ville</label>
-							  <div class="col-sm-4">
-							    <input class="form-control" type="text" name="city">
-							  </div>
-						    </div><br/>
-							
-							<h3>Administrateur</h3>
-							<div class="table-responsive">
-								<table class="table table-striped">
-								</table>
-							</div>
+						@inputText(   
+								form("email"), 
+		    					'_label -> "Email", 
+		    					'_div_class -> "col-sm-10",
+		   						'class -> "form-control",
+		   						'value -> "store.email",
+		   						'placeholder -> "Email"
+		   						)   
+						
+					  </div>
+					  <div class="hr-line-dashed"></div>
+					  <div class="form-group">
+					
+						@inputText(   
+								form("adress1"), 
+		    					'_label -> "Adresse 1",
+		   						'class -> "form-control",
+		   						'value -> "store.adress1",
+		   						'placeholder -> "Adress 1"
+		   						) 
+						
+					  </div><br/>
+					  <div class="form-group">
+						
+						@inputText(   
+								form("adress2"), 
+		    					'_label -> "Adresse 2",
+		    					'_div_class -> "col-sm-10", 
+		   						'class -> "form-control",
+		   						'value -> "store.adress2",
+		   						'placeholder -> "Adress 2"
+		   						) 
+					
+					  </div><br/>
+					  <div class="form-group">
+					
+						<div class="col-sm-6">
+						 @inputText(   
+								form("codePostal"), 
+		    					'_label -> "Code Postal",
+		   						'class -> "form-control",
+		   						'value -> "store.codePostal",
+		   						'placeholder -> "Post Code"
+		   						) 
 
-							<div class="form-group">
-							  <label class="col-sm-2 control-label">E-mail</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="email" name="email">
-							  </div>
-						    </div><br/>
-						    <div class="form-group">
-							  <label class="col-sm-2 control-label">Nom</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="lastname">
-							  </div>
-						    </div><br/>
-						    <div class="form-group">
-							  <label class="col-sm-2 control-label">Prenom</label>
-							  <div class="col-sm-10">
-							    <input class="form-control" type="text" name="firstname">
-							  </div>
-						    </div><br/>
-							
-							<div class="hr-line-dashed"></div>
-
-							<div class="button text-center">
-								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
-								<button type="button" class="btn btn-primary btn-lg active">Valider</button>
-							</div>
-						</form>
-
-					</div>
+						</div> 
+						<div class="col-sm-6">
+						 @inputText(   
+								form("ville"), 
+		    					'_label -> "Ville", 
+		   						'class -> "form-control",
+		   						'value -> "store.ville",
+		   						'placeholder -> "City"
+		   						) 
+						
+						</div> 
+					  </div>
+					  <div class="hr-line-dashed"></div>
+					</fieldset>	
+						<div class="button text-center">
+							<button class="btn btn-primary btn-lg active">Continuer</button>
+						</div>
+					
 				</div>
-			</div>
+			 </div>
+			 } 
+		  </div>
 		</div>
-	</div>
-</div>
+	  </div>
+</div>	      
 
 }
+							
+							

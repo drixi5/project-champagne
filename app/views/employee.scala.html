@@ -33,12 +33,16 @@
 			              <td>@User.firstname</td>
 			              <td>@User.email</td>
 			              <td>@User.typeUser.name</td>
-			              @if(User.typeUser.id != 1) {
 			              <td>
-			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
-                    	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
-                    	  </td>
+			              @if(User.typeUser.id != 1) {
+			              	<!--a href="#">
+			              	  <button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
+			              	</a-->
+			              	<a href="@routes.Employee.destroy(User.id)">
+                    	  	  <button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
+                    	  	</a>
                     	  }
+                    	  </td>
 			            </tr>
 			            }
 		            </tbody>

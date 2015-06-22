@@ -1,7 +1,10 @@
 @import helper._
 
-@(user: User, form: Form[models.Products])
-@main(user) {
+@(user: User,productForm: Form[models.Products],product : models.Products, actionRoute : play.api.mvc.Call))
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main(user){
 
 
 <div class="wrapper wrapper-content">
@@ -10,31 +13,40 @@
 			<div class="col-lg-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h3>Création d'un produit</h3>
+						<h3>@Messages("Création d'un produit")</h3>
 					</div>
 
-					@helper.form(action=routes.Product.saveProduct) {
+				
 					<div class="ibox-content">
+					@form(action = actionRoute, 'class -> "form") {
 					
+					@if(productForm.hasGlobalErrors) {
+		        <p class="error">
+		            <span class="label label-danger">@productForm.globalError.message</span>
+		        </p>
+		    }
+		    
+
 					<fieldset>
 					
 					@inputText(   
-								form("name"), 
+								productForm("name"), 
 							    '_label -> "Nom-Espèce",
 							    'class -> "form-control input-lg"
 							   )
 							   
 					@select(
-					        form("typeProduct.id"),
+					        productForm("typeProduct.id"),
 					        options = TypeProduct.selectCollection.toSeq,
 					        '_default -> "Choose One", 
 					        '_label -> "Type",     
 					        'class -> "form-control "   
 					        )
+
 					</fieldset>
 							<div class="button text-center">
-								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
-								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
+								
+								<button type="submit"  class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 }
 						
@@ -73,4 +85,4 @@
 </div>
 </div>
 
-	}
+}	

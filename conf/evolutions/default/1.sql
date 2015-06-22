@@ -140,6 +140,7 @@ create table user (
   constraint pk_user primary key (id))
 ;
 
+<<<<<<< HEAD
 alter table meals add constraint fk_meals_store_1 foreign key (store_id) references stores (id) on delete restrict on update restrict;
 create index ix_meals_store_1 on meals (store_id);
 alter table meals add constraint fk_meals_typeMeal_2 foreign key (type_meal_id) references type_meal (id) on delete restrict on update restrict;
@@ -178,6 +179,32 @@ alter table user add constraint fk_user_store_18 foreign key (store_id) referenc
 create index ix_user_store_18 on user (store_id);
 alter table user add constraint fk_user_supplier_19 foreign key (supplier_id) references suppliers (id) on delete restrict on update restrict;
 create index ix_user_supplier_19 on user (supplier_id);
+=======
+alter table orders_stores add constraint fk_orders_stores_store_1 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_orders_stores_store_1 on orders_stores (store_id);
+alter table orders_stores_prod_suppliers add constraint fk_orders_stores_prod_suppliers_product_2 foreign key (product_id) references products (id) on delete restrict on update restrict;
+create index ix_orders_stores_prod_suppliers_product_2 on orders_stores_prod_suppliers (product_id);
+alter table orders_stores_prod_suppliers add constraint fk_orders_stores_prod_suppliers_store_3 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_orders_stores_prod_suppliers_store_3 on orders_stores_prod_suppliers (store_id);
+alter table orders_stores_prod_suppliers add constraint fk_orders_stores_prod_suppliers_supplier_4 foreign key (supplier_id) references suppliers (id) on delete restrict on update restrict;
+create index ix_orders_stores_prod_suppliers_supplier_4 on orders_stores_prod_suppliers (supplier_id);
+alter table orders_suppliers add constraint fk_orders_suppliers_supplier_5 foreign key (supplier_id) references suppliers (id) on delete restrict on update restrict;
+create index ix_orders_suppliers_supplier_5 on orders_suppliers (supplier_id);
+alter table products add constraint fk_products_typeProduct_6 foreign key (type_product_id) references type_product (id) on delete restrict on update restrict;
+create index ix_products_typeProduct_6 on products (type_product_id);
+alter table stores_products add constraint fk_stores_products_product_7 foreign key (product_id) references products (id) on delete restrict on update restrict;
+create index ix_stores_products_product_7 on stores_products (product_id);
+alter table stores_products add constraint fk_stores_products_unit_8 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
+create index ix_stores_products_unit_8 on stores_products (unit_id);
+alter table suppliers_products add constraint fk_suppliers_products_product_9 foreign key (product_id) references products (id) on delete restrict on update restrict;
+create index ix_suppliers_products_product_9 on suppliers_products (product_id);
+alter table suppliers_products add constraint fk_suppliers_products_unit_10 foreign key (unit_id) references unit (id) on delete restrict on update restrict;
+create index ix_suppliers_products_unit_10 on suppliers_products (unit_id);
+alter table user add constraint fk_user_typeUser_11 foreign key (type_user_id) references type_user (id) on delete restrict on update restrict;
+create index ix_user_typeUser_11 on user (type_user_id);
+alter table user add constraint fk_user_store_12 foreign key (store_id) references stores (id) on delete restrict on update restrict;
+create index ix_user_store_12 on user (store_id);
+>>>>>>> master
 
 
 

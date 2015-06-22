@@ -1,4 +1,9 @@
-@(user: User)
+@(user: User, usersForm: Form[models.User])
+
+@import helper._
+    @implicitFieldConstructor = @{
+        FieldConstructor(twitterBootstrapInput.render)
+    }
 
 @main(user) {
 
@@ -11,25 +16,53 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
+		      <h3>Admnistrateur</h3>
+		      
+		      @form(action=controllers.account.routes.Signup.save(), 'class -> "form-horizontal "){
+					<div class="ibox-content">
+		
+				    <fieldset>
+				        @inputText(
+				            usersForm("lastname"),
+				            'placeholder -> Messages("Nom"),
+				            '_label -> "Nom",
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("firstname"),
+				            'placeholder -> Messages("Prenom"),
+				            '_label -> "Prenom",
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("email"),
+				            'placeholder -> Messages("Email"),
+				            '_label -> "E-mail",
+				            'class -> "form-control"
+				        )
+				        @inputPassword(
+				            usersForm("inputPassword"),
+				            '_label -> "Mot de passe",
+				            'placeholder -> Messages("Mot de passe"),
+				            'class -> "form-control"
+				        )
+				    </fieldset>
+				
+					<div class="hr-line-dashed"></div>
 
-<div class="ibox-content">
-
-<form method="post" action="" >
-
-<label class="btn btn-custom btn-s">E-mail</label> <input type="text" name="email"><br/>
-<label class="btn btn-custom btn-s">Prénom</label> <input type="text" name="fullname">
-<label class="btn btn-custom btn-s">Nom</label> <input type="text" name=""><br/>
-
-<div class="button text-center">
-<button class="btn btn-primary btn-lg active">Valider</button>
-</div>
+							<div class="button text-center">
+								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
+							</div>
+						}
+					</div>
 
 
-</form>
+				</form>
+			  </div>
+			</div>
+		</div>
+	  </div>
+	</div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 }

@@ -27,7 +27,7 @@
 		        
 		     @if(user.typeUser.id == 4) {
 		      	<li>
-		          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Boissons</a>
+		          <a aria-expanded="false" role="button" href="@routes.Drink.Drinks()"><i class="fa fa-home imenu"></i> Boissons</a>
 		        </li>
 		      }
 		 
@@ -70,7 +70,6 @@
 		          <a aria-expanded="false" role="button" href="@routes.Employee.index()"><i class="fa fa-users imenu"></i> Employees</a>
 		        </li>
 		        }
-		        
 		        @if(user.typeUser.id == 1){
 		        <li>
 		          <a aria-expanded="false" role="button" href="@routes.Product.index()"><i class="fa fa-shopping-cart imenu"></i> Produits</a>
@@ -83,13 +82,13 @@
 		            <li><a href="#">Types de produit</a></li>
 		          </ul>
 		        </li>
-		        }
+		        }  
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @user.firstname @user.lastname<b class="caret"></b></a>
 		            <ul class="dropdown-menu">
-		                <li><a href="@controllers.account.settings.routes.Index.index()"><i class="fa fa-wrench"></i> @Messages("settings")</a></li>
+		                <li><a href="@controllers.account.settings.routes.Index.index()"><i class="fa fa-wrench"></i> @Messages("Account settings")</a></li>
 		                <li><a href="@routes.Application.logout()"><i class="fa fa-power-off"></i> @Messages("logout")</a></li>
 		            </ul>
 		        </li>

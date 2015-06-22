@@ -1,0 +1,6 @@
+@(user: User, form: Form[models.Products], product: models.Products)
+
+@import models.Products
+
+
+    @addProduct(user, form, product, routes.Product.update(product.id))
