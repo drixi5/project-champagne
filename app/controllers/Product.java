@@ -57,7 +57,6 @@ public class Product extends Controller {
 		return ok(toJson(products));
 	}
 	
-<<<<<<< HEAD
 	public static class addNewProduct {
 
         @Constraints.Required
@@ -114,8 +113,6 @@ public class Product extends Controller {
 	            return index();
 	        
 	    }
-	 
-	}	
 
 	public static Result Drinks(){
 		List<Product> products = new Model.Finder(String.class, Products.class).all();
