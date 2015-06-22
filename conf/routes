@@ -66,6 +66,11 @@ GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
 POST 	/product					controllers.Product.saveProduct()
 GET		/products					controllers.Product.getProducts()
+GET		/drink						controllers.Drink.Drinks()
+GET		/drinkInc					controllers.Drink.Increment(id: Long)
+POST	/drinkInc					controllers.Drink.Increment(id: Long)
+GET 	/drinkDec					controllers.Drink.Decrement(id: Long)
+POST 	/drinkDec					controllers.Drink.Decrement(id: Long)
 
 #Employee
 GET     /employee                  	controllers.Employee.index()

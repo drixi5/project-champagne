@@ -45,4 +45,9 @@ public class Product extends Controller {
 		return ok(toJson(products));
 	}
 	
+	public static Result Drinks(){
+		List<Product> products = new Model.Finder(String.class, Products.class).all();
+		return ok(toJson(products));
+	}
+	
 }
