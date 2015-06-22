@@ -66,6 +66,8 @@ GET     /product                  	controllers.Product.index()
 GET     /product/addProduct         controllers.Product.addProduct()
 POST 	/product					controllers.Product.saveProduct()
 GET		/products					controllers.Product.getProducts()
+GET     /product/:id/edit   		controllers.Product.edit(id: Long)
+POST    /product/:id        		controllers.Product.update(id: Long)
 
 #Employee
 GET     /employee                  	controllers.Employee.index()

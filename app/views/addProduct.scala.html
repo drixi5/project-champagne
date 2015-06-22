@@ -1,6 +1,6 @@
 @import helper._
 
-@(user: User,productForm: Form[models.Products])
+@(user: User,productForm: Form[models.Products],product : models.Products, actionRoute : play.api.mvc.Call))
 
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
 
@@ -18,7 +18,7 @@
 
 				
 					<div class="ibox-content">
-					@form(routes.Product.saveProduct(), 'class -> "form") {
+					@form(action = actionRoute, 'class -> "form") {
 					
 					@if(productForm.hasGlobalErrors) {
 		        <p class="error">
@@ -45,8 +45,8 @@
 
 					</fieldset>
 							<div class="button text-center">
-								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
-								<button type="submit" onclick="return validateMyForm()" class="btn btn-primary btn-lg active">Valider</button>
+								
+								<button type="submit"  class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 }
 						
