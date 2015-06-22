@@ -10,6 +10,7 @@ import models.User;
 import models.Products;
 import models.StoresProducts;
 import models.Unit;
+import play.Logger;
 import play.data.Form;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -23,12 +24,17 @@ import views.html.addProductStock;
 public class Dashboard extends Controller {
 	
 	final static Form<StoresProducts> stockForm = form(StoresProducts.class);
-
+    
+    
+   
+    
+ //page view  dashboard/index
     public static Result index() {
+    	
         return ok(index.render(User.findByEmail(request().username()), StoresProducts.find.orderBy("id asc").findList(), form(Quantity.class)));
     }
     
-    
+//page view addProductStock    
     public static Result viewAddPStock(){
     	return ok(addProductStock.render(User.findByEmail(request().username()), stockForm));
     }
@@ -39,22 +45,21 @@ public class Dashboard extends Controller {
     	Form<StoresProducts> form = stockForm.bindFromRequest();
     	
     	if (form.hasErrors()){
-			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
-		 
-    	}else if(form.get().threshold_max<form.get().threshold_min){
+			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));	 
+    	}else if(form.get().threshold_max< form.get().threshold_min){
     		 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
-    	
-    	}else { 
-			 
+    	}else if(form.get().quantity< form.get().threshold_min){
+   		 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));	 
+    	}else if(form.get().quantity>form.get().threshold_max){
+      		 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));	 
+       	
+    	}else {
+    		 
 			 StoresProducts stock= form.get();
 			 stock.save();
 			 return index();
 		 }
     }
-    
-   
- 	
-    
     
     
     public static Result edit(Long id){

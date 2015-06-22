@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -26,8 +27,8 @@ public class StoresProducts extends Model {
 	@ManyToOne 
     public Products product ;
 	
-	//@ManyToOne
-   // public Stores store ;
+	@ManyToOne
+    public Stores store ;
 
 
 	@ManyToOne 
@@ -55,6 +56,7 @@ public class StoresProducts extends Model {
     
     public static Model.Finder<Long, StoresProducts> find = new Model.Finder<Long, StoresProducts>(Long.class,StoresProducts.class);
     
+  
    
 
 }

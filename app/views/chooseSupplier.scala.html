@@ -1,0 +1,78 @@
+@(user: User, order : Orders, suppliersStocks : java.util.List[models.SuppliersProducts])
+
+@main(user) {
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Choix fournisseur</h3>
+		      </div>
+		      <div class="ibox-content">
+		      <div class="row">
+		      	<div class="col-md-6">
+		      		<div class="container frame" style="border: solid 1px #e7eaec;">
+		      		  <h4>Restaurant : @order.store.name</h4>
+		      		  <p>Adresse :</br>
+		      @order.store.adress1 </br>
+		      @order.store.codePostal </br>
+		      @order.store.ville </br>
+		      Adresse mail : @order.store.email
+		      		  </p>
+		      		</div>
+		      	 </div>
+		      	 <div class="col-md-6">
+		      	   <div class="container frame" style="border: solid 1px #e7eaec;">
+		      		 <h4>Commande</h4>
+		      		 <p>Numero de commande : @order.id</p>
+		      		 <p> Produit : @order.storesProducts.product.name </p>
+		      		 <p>Quantite : @order.quantity @order.storesProducts.unit.name</p>
+		      	</div>
+		      	 </div>
+		      	</div>
+		      	<div class="hr-line-dashed"></div>
+		      	<h3>Fournisseurs</h3>
+		        <div class="table-responsive">
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Nom</th>
+		              <th>E-mail</th>
+		              <th>Addresse</th>
+		              <th>Code postal</th>
+		              <th>Ville</th>
+		              <th>Quantité du produit</th>
+		              <th></th>
+		            </tr>
+		            </thead>
+		            <tbody>
+		            @for(supplierStock <- suppliersStocks){
+		            	@if(supplierStock.quantity >  order.quantity){
+			            <tr>
+			              <td>@supplierStock.supplier.name</td>
+			              <td>@supplierStock.supplier.email</td>
+			              <td>@supplierStock.supplier.adress1</td>
+			              <td>@supplierStock.supplier.codePostal</td>
+			              <td>@supplierStock.supplier.ville</td>
+			              <td>@supplierStock.quantity @supplierStock.unit.name</td>
+			              <td>
+			              <a href="@routes.OrderCommand.validSupplier(user.typeUser.id, order.id, supplierStock.id )">
+			              <button class="btn btn-custom btn-s" title="Valider"><i class="fa fa-check"></i> Valider</button>
+			              </a>
+			              </td>
+			            </tr>
+			               }}
+		            </tbody>
+		          </table>
+		        </div>
+		
+		      </div>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+    
+}

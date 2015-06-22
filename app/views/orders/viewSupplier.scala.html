@@ -1,0 +1,26 @@
+
+@(user: User, supplier : Suppliers)
+@main(user) {
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>@supplier.name</h3>
+		      </div>
+		      <div class="ibox-content">
+		      Adresse : </br>
+		      @supplier.adress1 </br>
+		      @supplier.codePostal </br>
+		      @supplier.ville </br>
+		      Adresse mail : @supplier.email
+		      </div>		
+			 </div>
+		  </div>
+		</div>
+	  </div>
+</div>	      
+		      
+		      }

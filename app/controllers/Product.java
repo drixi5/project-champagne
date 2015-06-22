@@ -17,7 +17,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import views.html.addStore;
 import views.html.editStore;
-import views.html.editProduct;
+//import views.html.editProduct;
 import views.html.product;
 import views.html.addProduct;
 

@@ -1,6 +1,6 @@
 @import helper._
 
-@(user: User, stocks : java.util.List[models.StoresProducts], quantityForm: Form[Dashboard.Quantity])
+@(user: User, stocks : java.util.List[models.SuppliersProducts], quantityForm: Form[StockSuppliers.Quantity])
 
 @main(user) {
 
@@ -14,7 +14,7 @@
 		      </div>
 		      <div class="ibox-content">
 		        <div class="table-responsive">
-		         <a class="add-link" href="@routes.Dashboard.viewAddPStock()">
+		         <a class="add-link" href="@routes.StockSuppliers.viewAddPStock()">
      				<button class="btn btn-custom add" ><i class="fa fa-plus"></i> Ajouter un produit</button>
      			  </a>
 		          <table class="table table-striped">
@@ -23,17 +23,14 @@
 		              <th>Nom - Espéce</th>
 		              <th>Type</th>
 		              <th>Quantité</th>
-		              <th>Seuil Min</th>
-		              <th>Seuil Max</th>
+		      
 		            
 		            </tr>
 		            </thead>
 		            <tbody>
 		            @for(stock <- stocks){	
-		            @if(stock.store.id == user.store.id){
-			          <tr class= @if(stock.quantity <= stock.threshold_min) {"danger" } else { 
-			          @if(stock.quantity < stock.threshold_min*2) { "warning" } else { "success" }
-			          }>
+		            @if(stock.supplier.id == user.supplier.id){
+			          <tr>
 			         
 			         
 			              <td>@stock.product.name</td>
@@ -41,34 +38,33 @@
 			              <td>
 			              @stock.quantity
 			              @stock.unit.name
-	
+							
 			              @if(stock.edit == false ){
 			              }else{ 
-			              @form(routes.Dashboard.modifyAdd(stock.id), 'class -> "form") {
+			              @form(routes.StockSuppliers.modifyAdd(stock.id), 'class -> "form") {
 			              <br/>
 			              <input class="input-mini" type="text" name="quantity" placeholder=0>
 			              <button type="submit" class="btn btn-sm btn-default">
 			              <span class="glyphicon glyphicon-plus"></span></button>
 			              }
-			               @form(routes.Dashboard.modifyMinus(stock.id), 'class -> "form") {
+			               @form(routes.StockSuppliers.modifyMinus(stock.id), 'class -> "form") {
 			              <input class="input-mini" type="text" name="quantity" placeholder=0>
 			              <button type="submit" class="btn btn-sm btn-default">
 			              <span class="glyphicon glyphicon-minus"></span></button>
 			       		     }
 			              } 
 			              </td>
-			              <td>@stock.threshold_min @stock.unit.name</td>
-			              <td>@stock.threshold_max @stock.unit.name</td>
+			              
 			              <td>
 			              @if(stock.edit == false ){
-			              <a href="@routes.Dashboard.edit(stock.id)">
+			              <a href="@routes.StockSuppliers.edit(stock.id)">
 			              	<button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
 			              </a> 	
-			              <a href="@routes.Dashboard.destroy(stock.id)">
+			              <a href="@routes.StockSuppliers.destroy(stock.id)">
                     	  	<button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
                     	  </a> 
                     	  }else{
-                    	   <a href="@routes.Dashboard.endModify(stock.id)">
+                    	   <a href="@routes.StockSuppliers.endModify(stock.id)">
                     	  	<button class="btn btn-custom btn-s"><i class="fa fa-pencil"></i></button>
                     	  	 </a> 
                     	  }

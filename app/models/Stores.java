@@ -39,8 +39,6 @@ public class Stores extends Model {
 	@Formats.NonEmpty
 	public String ville;
 	
-	//@ManyToOne
-	//public User user;
 	public Stores()  {
     }
 	

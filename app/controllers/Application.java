@@ -27,7 +27,14 @@ public class Application extends Controller {
     public static Result GO_DASHBOARD = redirect(
             routes.Dashboard.index()
     );
+    
+    public static Result GO_STORE = redirect(
+            routes.Store.index()
+    );
 
+    public static Result GO_STOCKSUPPLIER = redirect(
+            routes.StockSuppliers.index()
+    );
     /**
      * Display the login page or dashboard if connected
      *
@@ -39,7 +46,13 @@ public class Application extends Controller {
         if (email != null) {
             User user = User.findByEmail(email);
             if (user != null && user.validated) {
+            	if( user.typeUser.id == 1){
+            		return GO_STORE;
+            	} else if (user.typeUser.id == 5){
+            		return GO_STOCKSUPPLIER;
+            	}else{
                 return GO_DASHBOARD;
+            	}
             } else {
                 Logger.debug("Clearing invalid session credentials");
                 session().clear();

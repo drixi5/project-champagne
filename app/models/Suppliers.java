@@ -40,18 +40,6 @@ public class Suppliers extends Model{
 	@Formats.NonEmpty
 	public String ville;
 	
-	public Suppliers()  {
-    }
-	
-	public Suppliers(String name,String email, String adress1, String adress2, int codePostal, String ville) {
-        this.name = name;
-        this.email = email;
-        this.adress1 = adress1;
-        this.adress2 = adress2;
-        this.codePostal=codePostal;
-        this.ville=ville;
-    }
-	
 	
 	 public String validate(){
 		 if ((name == null) || (email == null) || (adress1 == null) || (codePostal == 0) || (ville == null)) {

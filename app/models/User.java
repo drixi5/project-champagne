@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import java.util.Date;
 
@@ -53,6 +54,9 @@ public class User extends Model {
     
     @ManyToOne
     public Stores store;
+    
+    @OneToOne
+    public Suppliers supplier;
 
     // -- Queries (long id, user.class)
     public static Model.Finder<Long, User> find = new Model.Finder<Long, User>(Long.class, User.class);

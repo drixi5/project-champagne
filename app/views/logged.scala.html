@@ -15,18 +15,32 @@
 		    <div class="navbar-collapse collapse" id="navbar" nav-collapse>
 		      <ul class="nav navbar-nav">
 		      @if(user.typeUser.id != 1) {
+		       	@if(user.typeUser.id == 5){
+		       	<li>
+		          <a aria-expanded="false" role="button" href="@routes.StockSuppliers.index()"><i class="fa fa-home imenu"></i> Stocks</a>
+		        </li>
+		       	}else{
 		        <li>
 		          <a aria-expanded="false" role="button" href="@routes.Dashboard.index()"><i class="fa fa-home imenu"></i> Stocks</a>
 		        </li>
-		      }
-		      @if(user.typeUser.id == 4) {
+		        }}
+		        
+		     @if(user.typeUser.id == 4) {
 		      	<li>
 		          <a aria-expanded="false" role="button" href="@routes.Drink.Drinks()"><i class="fa fa-home imenu"></i> Boissons</a>
 		        </li>
 		      }
-		      @if(user.typeUser.id == 3 || user.typeUser.id == 4) {
-		      	<li>
-		          <a aria-expanded="false" role="button" href="#"><i class="fa fa-home imenu"></i> Plats</a>
+		 
+		       @if(user.typeUser.id == 3) {
+		      	<li class="dropdown">
+		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Plats<span
+		            class="caret"></span></a>
+		          <ul role="menu" class="dropdown-menu">
+		            <li><a href="@routes.Meal.meal(1)">Entrée</a></li>
+		            <li><a href="@routes.Meal.meal(2)">Plats principaux</a></li>
+		            <li><a href="@routes.Meal.meal(3)">Desserts</a></li>
+		            <li><a href="@routes.Meal.addMeal()">Ajouter un plat</a></li>
+		           </ul> 
 		        </li>
 		      }
 		      @if(user.typeUser.id == 1) {
@@ -37,26 +51,30 @@
 		          <a aria-expanded="false" role="button" href="@routes.Supplier.index()"><i class="fa fa-shopping-cart imenu"></i> Fournisseurs</a>
 		        </li>
 		      }
-		      @if(user.typeUser.id != 3 || user.typeUser.id != 4){
+		      
+		      @if(user.typeUser.id != 3 && user.typeUser.id != 4){
 		        <li class="dropdown">
 		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Commandes<span
 		            class="caret"></span></a>
 		          <ul role="menu" class="dropdown-menu">
-		            @if(user.typeUser.id == 2){<li><a href="@routes.OrderCommand.index()">Commander</a></li>}
-		            @if(user.typeUser.id == 1 || user.typeUser.id == 5){<li><a href="@routes.OrderToHandle.index()">Commandes a traiter</a></li>}
-		            @if(user.typeUser.id == 1 || user.typeUser.id == 2){<li><a href="@routes.OrderInProgress.index()">Commandes en cours</a></li>}
-		            @if(user.typeUser.id == 1 || user.typeUser.id == 2 || user.typeUser.id == 5){<li><a href="@routes.OrderValid.index()">Commandes traitees</a></li>}
+		           @if(user.typeUser.id == 2){<li><a href="@routes.OrderCommand.orderCommand(user.store.id)">Commander</a></li>}
+		           @if(user.typeUser.id == 1 || user.typeUser.id == 5){ <li><a href="@routes.OrderCommand.orderHandle(user.id)">Commandes a traiter</a></li>}
+		           @if(user.typeUser.id == 1 || user.typeUser.id == 2){<li><a href="@routes.OrderCommand.orderInProgress(user.id)">Commandes en cours</a></li>}
+		           @if(user.typeUser.id == 1 || user.typeUser.id == 2 || user.typeUser.id == 5){ <li><a href="@routes.OrderCommand.orderValid(user.id)">Commandes traites</a></li>}
 		          </ul>
-		         </li>
+		        </li>
+		        }
+		        
+		         @if(user.typeUser.id == 2 || user.typeUser.id == 1){
+		          <li>
+		          <a aria-expanded="false" role="button" href="@routes.Employee.index()"><i class="fa fa-users imenu"></i> Employees</a>
+		        </li>
 		        }
 		        @if(user.typeUser.id == 1){
 		        <li>
 		          <a aria-expanded="false" role="button" href="@routes.Product.index()"><i class="fa fa-shopping-cart imenu"></i> Produits</a>
 		        </li>
-		        <li>
-		          <a aria-expanded="false" role="button" href="@routes.Employee.index()"><i class="fa fa-users imenu"></i> Employees</a>
-		        </li>
-		        <li class="dropdown">
+		         <li class="dropdown">
 		          <a aria-expanded="false" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tags fa-flip-horizontal imenu"></i> Parametres<span
 		            class="caret"></span></a>
 		          <ul role="menu" class="dropdown-menu">
