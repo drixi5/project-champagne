@@ -95,6 +95,10 @@ public class Application extends Controller {
 
         @Constraints.Required
         public String inputPassword;
+        
+        public TypeUser typeUser;
+        
+        public Stores store;
 
         /**
          * Validate the authentication.

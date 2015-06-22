@@ -1,4 +1,4 @@
-@(user: User, usersForm: Form[models.User]) 
+@(user: User, usersForm: Form[models.User], actionRoute : play.api.mvc.Call) 
 
 @import helper._
     @implicitFieldConstructor = @{
@@ -22,53 +22,39 @@
 						<h3>Ajout d'un employee</h3>
 					</div>
 					
-					@form(controllers.account.routes.Signup.save()) {
+					@form(action=actionRoute, 'class -> "form-horizontal "){
+					<div class="ibox-content">
 		
 				    <fieldset>
 				        @inputText(
 				            usersForm("email"),
 				            'placeholder -> Messages("email"),
-				            '_label -> null,
+				            '_label -> "Email",
 				            'class -> "form-control"
 				        )
 				        @inputText(
 				            usersForm("firstname"),
 				            'placeholder -> Messages("firstname"),
-				            '_label -> null,
+				            '_label -> "Prenom",
 				            'class -> "form-control"
 				        )
 				        @inputText(
 				            usersForm("lastname"),
 				            'placeholder -> Messages("lastname"),
-				            '_label -> null,
+				            '_label -> "Nom",
 				            'class -> "form-control"
 				        )
 				        @inputPassword(
 				            usersForm("inputPassword"),
-				            '_label -> null,
+				            '_label -> "Mot de passe",
 				            'placeholder -> Messages("password"),
 				            'class -> "form-control"
 				        )
-				        @select(
-					        usersForm("typeUser.id"),
-					        options = TypeUser.selectTypeUser.toSeq,
-					        '_default -> "Choose One", 
-					        '_label -> "statut",     
-					        'class -> "form-control "   
-					        )
-					    @select(
-					        usersForm("store.id"),
-					        options = Stores.selectStores.toSeq,
-					        '_default -> "Choose One", 
-					        '_label -> "Entite",     
-					        'class -> "form-control "   
-					        )
 				    </fieldset>
 				
 					<div class="hr-line-dashed"></div>
 
 							<div class="button text-center">
-								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 						}

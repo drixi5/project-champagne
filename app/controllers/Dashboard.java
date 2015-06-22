@@ -41,7 +41,7 @@ public class Dashboard extends Controller {
     	if (form.hasErrors()){
 			 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
 		 
-    	}else if(stockForm.get().threshold_max<stockForm.get().threshold_min){
+    	}else if(form.get().threshold_max<form.get().threshold_min){
     		 return badRequest(addProductStock.render(User.findByEmail(request().username()),form));
     	
     	}else { 

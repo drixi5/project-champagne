@@ -1,0 +1,57 @@
+@(user: User, stocks : java.util.List[models.StoresProducts])
+
+@main(user){
+	@stocks.size stocks@(if(stocks.size !=1) "s")
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Boissons</h3>
+		      </div>
+		      <div class="ibox-content">
+		        <div class="table-responsive">
+		          <table class="table table-striped">
+		            <thead>
+		            <tr>
+		              <th>Nom</th>
+		              <th>Quantite</th>
+		              <th>Increment/Decrement</th>
+		              <th>Seuil Min</th>
+		              <th>Seuil Max</th>
+		            </tr>
+		            </thead>
+		            <tbody>
+		            	@for(stock <- stocks){	
+			            <tr>
+			              <td>@stock.product.name</td>
+			              <td>@stock.quantity</td>
+			              <td>
+			              
+			              <a href="@routes.Drink.Increment(stock.id)">
+			              <button class="btn btn-sm btn-default" type="button" > <span class="glyphicon glyphicon-plus"></span></button>
+			              </a> 
+			              <a href="@routes.Drink.Decrement(stock.id)">
+			             	<!--tried to change to product_id. doesnt work and not needed.-->
+			               <button class="btn btn-sm btn-default" type="button"> <span class="glyphicon glyphicon-minus"></span></button>
+			              </a>
+			                
+			              </td>
+			              <td>@stock.threshold_min</td>
+			              <td>@stock.threshold_max</td>
+			            </tr>
+			            }
+		            </tbody>
+		          </table>
+		        </div>
+		
+		      </div>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+    
+}
