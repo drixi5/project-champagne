@@ -72,7 +72,7 @@ public class Products extends Model {
         HashMap<String, String> output = new HashMap<String, String>();
         
         List<StoresProducts> stock = StoresProducts.find.all();
-        List<Long> stockId = new ArrayList<>();
+        List<Long> stockId = new ArrayList();
         for(StoresProducts sp : stock){
         	if(sp.store.id==id){
         	//Logger.debug(sp.store.id+"store");	
@@ -99,7 +99,7 @@ public class Products extends Model {
         HashMap<String, String> output = new HashMap<String, String>();
         
         List<SuppliersProducts> stock = SuppliersProducts.find.all();
-        List<Long> stockId = new ArrayList<>();
+        List<Long> stockId = new ArrayList();
         for(SuppliersProducts sp : stock){
         	if(sp.supplier.id==id){
         	//Logger.debug(sp.store.id+"store");	
@@ -124,7 +124,7 @@ public class Products extends Model {
     public static HashMap<String, String> selectProducts2(Long id)  {
         HashMap<String, String> output = new HashMap<String, String>();
         List<StoresProducts> stock = StoresProducts.find.all();
-        List<Long> stockId = new ArrayList<>();
+        List<Long> stockId = new ArrayList();
         for(StoresProducts sp : stock){
         	if(sp.store.id==id){
         	stockId.add(sp.product.id);
