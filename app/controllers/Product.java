@@ -37,14 +37,14 @@ public class Product extends Controller {
 	
     public static Result addProduct(){
     	Products product = new Products();
-    	return ok(addProduct.render(User.findByEmail(request().username()), productForm, product, routes.Product.addProduct()));
+    	return ok(addProduct.render(User.findByEmail(request().username()), productForm, product, routes.Product.saveProduct()));
     }
 	
 	public static Result saveProduct(){
 		Form<Products> productForm = form(Products.class).bindFromRequest();
 		 if (productForm.hasErrors()){
 			 Products product = new Products();
-			 return badRequest(addProduct.render(User.findByEmail(request().username()), productForm, product, routes.Product.addProduct()));
+			 return badRequest(addProduct.render(User.findByEmail(request().username()), productForm, product, routes.Product.saveProduct()));
 		 }
 		
 		 Products product= productForm.get();
