@@ -120,19 +120,19 @@ public class Application extends Controller {
          */
         public String validate() {
             if (isBlank(email)) {
-                return "Email is required";
+                return "Adresse mail obligatoire";
             }
 
             if (isBlank(lastname)) {
-                return "Last name is required";
+                return "Nom obligatoire";
             }
             
             if (isBlank(firstname)) {
-                return "First name is required";
+                return "Prénom obligatoire";
             }
 
             if (isBlank(inputPassword)) {
-                return "Password is required";
+                return "Mot de passe obligatoire";
             }
 
             return null;
