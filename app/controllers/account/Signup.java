@@ -2,6 +2,8 @@ package controllers.account;
 
 import controllers.Application;
 import models.User;
+import models.TypeUser;
+import models.Stores;
 import models.utils.AppException;
 import models.utils.Hash;
 import models.utils.Mail;
@@ -74,6 +76,7 @@ public class Signup extends Controller {
             user.firstname = register.firstname;
             user.passwordHash = Hash.createPassword(register.inputPassword);
             user.confirmationToken = UUID.randomUUID().toString();
+            
 
             user.save();
             sendMailAskForConfirmation(user);

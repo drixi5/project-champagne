@@ -50,26 +50,11 @@
 				            'placeholder -> Messages("password"),
 				            'class -> "form-control"
 				        )
-				        @select(
-					        usersForm("typeUser.id"),
-					        options = TypeUser.selectTypeUser.toSeq,
-					        '_default -> "Choose One", 
-					        '_label -> "statut",     
-					        'class -> "form-control "   
-					        )
-					    @select(
-					        usersForm("store.id"),
-					        options = Stores.selectStores.toSeq,
-					        '_default -> "Choose One", 
-					        '_label -> "Entite",     
-					        'class -> "form-control "   
-					        )
 				    </fieldset>
 				
 					<div class="hr-line-dashed"></div>
 
 							<div class="button text-center">
-								<button type="button" class="btn btn-white btn-lg active">Continuer</button>
 								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
 							</div>
 						}

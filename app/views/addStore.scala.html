@@ -2,7 +2,7 @@
 @import helper._
 
 
-@(user: User, form: Form[models.Stores], store : models.Stores)
+@(user: User, form: Form[models.Stores], store : models.Stores, actionRoute : play.api.mvc.Call)
 @main(user) {
 
 
@@ -14,7 +14,7 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
-				 @helper.form(action=routes.Store.addStore(), 'class -> "form-horizontal ") { 
+				 @helper.form(action=actionRoute, 'class -> "form-horizontal ") { 
 
 				<div class="ibox-content">
 		

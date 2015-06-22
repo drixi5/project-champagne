@@ -21,6 +21,7 @@ public class Store extends Controller {
 	    }
 	  
 	 final static Form<Stores> storeForm = form(Stores.class);
+	 final static Form<User> usersForm = form(User.class);
 	 
 	 public static Result viewAddStore(){
 		 Stores store = new Stores();
@@ -28,6 +29,11 @@ public class Store extends Controller {
 		 return ok(addStore.render(User.findByEmail(request().username()),storeForm, store, routes.Store.addStore()));
 	 }
 	 	 
+	 
+	 public static Result addAdmin() {
+		 
+		 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
+	 }
 	 
 	 
 	 public static Result addStore(){
@@ -41,8 +47,8 @@ public class Store extends Controller {
 		 { 
 			 Stores store= form.get();
 			 store.save();
-			 //return ok(addAdmin.render(User.findByEmail(request().username())));
-			 return index();
+			 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
+			 
 		 }
 	 } 	 
 		 
