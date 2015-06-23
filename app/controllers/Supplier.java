@@ -4,18 +4,16 @@ import static play.data.Form.form;
 import models.Stores;
 import models.Suppliers;
 import models.User;
-
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-
+import views.html.addAdmin;
 import views.html.addStore;
 import views.html.editStore;
 import views.html.supplier;
 import views.html.addSupplier;
 import views.html.editSupplier;
-
 import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
@@ -26,6 +24,7 @@ public class Supplier extends Controller {
         return ok(supplier.render(User.findByEmail(request().username()), Suppliers.find.orderBy("id asc").findList()));
     }
 	final static Form<Suppliers> supplierForm = form(Suppliers.class);
+	final static Form<User> usersForm = form(User.class);
 	
 	 public static Result viewAddSupplier(){
 		 Suppliers supplier = new Suppliers(); 
@@ -43,7 +42,7 @@ public class Supplier extends Controller {
 		 { 
 			 Suppliers supplier= form.get();
 			 supplier.save();
-			 return index();
+			 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
 		 }
 	}
 		 public static Result edit(Long id)  {

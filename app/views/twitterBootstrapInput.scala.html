@@ -4,10 +4,12 @@
  * Generate input according twitter bootstrap 3 rules.
  *@
 <div class="form-group @if(elements.hasErrors) {error}">
-    <label for="@elements.id">@elements.label</label>
-    @elements.input
-    <p class="help-inline">@elements.infos.mkString(", ")</p>
-    @if(elements.hasErrors) {
-        <p class="help-inline">@elements.errors.mkString(", ")</p>
-    }
+    <label class="col-sm-2 control-label" for="@elements.id">@elements.label</label>
+    <div class="col-sm-10">
+    	@elements.input
+    	<p class="help-inline" style="color: #ef423e;">@elements.infos.mkString(", ")</p>
+    	@if(elements.hasErrors) {
+        	<p class="help-inline">@elements.errors.mkString(", ")</p>
+    	}
+    </div>
 </div>

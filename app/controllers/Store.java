@@ -2,14 +2,25 @@ package controllers;
 
 
 
+import java.util.UUID;
+
+import org.apache.commons.mail.EmailException;
+
+import controllers.account.Signup;
 import models.User;
+import models.TypeUser;
 import models.Stores;
+import models.utils.Hash;
+import play.Logger;
+import play.i18n.Messages;
 import play.mvc.*;
 import play.data.Form;
 import views.html.store;
 import views.html.addStore;
 import views.html.addAdmin;
 import views.html.editStore;
+import views.html.account.signup.create;
+import views.html.account.signup.created;
 import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
@@ -31,8 +42,9 @@ public class Store extends Controller {
 	 	 
 	 
 	 public static Result addAdmin() {
-		 
-		 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
+		            
+		            return index();
+		        
 	 }
 	 
 	 

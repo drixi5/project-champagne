@@ -48,7 +48,7 @@ POST    /store/:id        			controllers.Store.update(id: Long)
 GET    /store/:id		  			controllers.Store.destroy(id: Long)
 
 #POST    /store/addAdmin			controllers.Store.addStore()
-#POST    /store						controllers.Store.addAdmin()
+#POST    /store/admin				controllers.Store.addAdmin()
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()

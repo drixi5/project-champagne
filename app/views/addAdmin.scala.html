@@ -16,10 +16,11 @@
 		      <div class="ibox-title">
 		        <h3>Ajouter un restaurant</h3>
 		      </div>
-		      <h3>Admnistrateur</h3>
 		      
 		      @form(action=controllers.account.routes.Signup.save(), 'class -> "form-horizontal "){
 					<div class="ibox-content">
+					
+					<h3>Admnistrateur</h3>
 		
 				    <fieldset>
 				        @inputText(
@@ -45,6 +46,18 @@
 				            '_label -> "Mot de passe",
 				            'placeholder -> Messages("Mot de passe"),
 				            'class -> "form-control"
+				        )
+				        @select(
+				        	usersForm("typeUser.id"),
+				        	options = TypeUser.selectTypeUser.toSeq,
+				        	'_label -> "Fonction",
+				        	'class -> "form-control"
+				        )
+				       @select(
+				        	usersForm("store.id"),
+				        	options = Stores.selectStores.toSeq,
+				        	'_label -> "Magasin",
+				        	'class -> "form-control"
 				        )
 				    </fieldset>
 				

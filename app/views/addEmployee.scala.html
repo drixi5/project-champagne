@@ -34,21 +34,33 @@
 				        )
 				        @inputText(
 				            usersForm("firstname"),
-				            'placeholder -> Messages("firstname"),
+				            'placeholder -> Messages("Prenom"),
 				            '_label -> "Prenom",
 				            'class -> "form-control"
 				        )
 				        @inputText(
 				            usersForm("lastname"),
-				            'placeholder -> Messages("lastname"),
+				            'placeholder -> Messages("Nom"),
 				            '_label -> "Nom",
 				            'class -> "form-control"
 				        )
 				        @inputPassword(
 				            usersForm("inputPassword"),
 				            '_label -> "Mot de passe",
-				            'placeholder -> Messages("password"),
+				            'placeholder -> Messages("Mot de passe"),
 				            'class -> "form-control"
+				        )
+				        @select(
+				        	usersForm("typeUser.id"),
+				        	options = TypeUser.selectTypeUser.toSeq,
+				        	'_label -> "Fonction",
+				        	'class -> "form-control"
+				        )
+				        @select(
+				        	usersForm("store.id"),
+				        	options = Stores.selectStores.toSeq,
+				        	'_label -> "Magasin",
+				        	'class -> "form-control"
 				        )
 				    </fieldset>
 				

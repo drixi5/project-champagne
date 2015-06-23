@@ -1,7 +1,6 @@
+@(user: User,productForm: Form[models.Products],product : models.Products, actionRoute : play.api.mvc.Call)
+
 @import helper._
-
-@(user: User,productForm: Form[models.Products],product : models.Products, actionRoute : play.api.mvc.Call))
-
 @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
 
 @main(user){
@@ -18,13 +17,8 @@
 
 				
 					<div class="ibox-content">
-					@form(action = actionRoute, 'class -> "form") {
+					@form(action = actionRoute, 'class -> "form-horizontal") {
 					
-					@if(productForm.hasGlobalErrors) {
-		        <p class="error">
-		            <span class="label label-danger">@productForm.globalError.message</span>
-		        </p>
-		    }
 		    
 
 					<fieldset>
@@ -40,44 +34,18 @@
 					        options = TypeProduct.selectCollection.toSeq,
 					        '_default -> "Choose One", 
 					        '_label -> "Type",     
-					        'class -> "form-control "   
+					        'class -> "form-control"   
 					        )
 
 					</fieldset>
+					<div class="hr-line-dashed"></div>
 							<div class="button text-center">
 								
 								<button type="submit"  class="btn btn-primary btn-lg active">Valider</button>
 							</div>
-}
+					}
 						
-						<!-- h3>Produits</h3>
-
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Nom - Espece</th>
-										<th>Type</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Courgette</td>
-										<td>Legumes</td>
-										<td>
-											<button class="btn btn-custom btn-s" title="Modifier">
-												<i class="fa fa-cog"></i>
-											</button>
-											<button class="btn btn-custom btn-s" title="Supprimer">
-												<i class="fa fa-trash-o"></i>
-											</button>
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>	
-					</div -->
+						
 				</div>
 			</div>
 		</div>
