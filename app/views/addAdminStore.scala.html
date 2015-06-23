@@ -1,0 +1,71 @@
+@(user: User, usersForm: Form[models.User], store : Stores)
+
+@import helper._
+    @implicitFieldConstructor = @{
+        FieldConstructor(twitterBootstrapInput.render)
+    }
+
+@main(user) {
+
+
+<div class="wrapper wrapper-content">
+      <div class="container">
+        <div class="row">
+		  <div class="col-lg-12">
+		    <div class="ibox float-e-margins">
+		      <div class="ibox-title">
+		        <h3>Ajouter un restaurant</h3>
+		      </div>
+		      
+		      @form(action=controllers.account.routes.Signup.save(), 'class -> "form-horizontal "){
+					<div class="ibox-content">
+					
+					<h3>Admnistrateur</h3>
+		
+				    <fieldset>
+				        @inputText(
+				            usersForm("lastname"),
+				            'placeholder -> Messages("Nom"),
+				            '_label -> "Nom",
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("firstname"),
+				            'placeholder -> Messages("Prenom"),
+				            '_label -> "Prenom",
+				            'class -> "form-control"
+				        )
+				        @inputText(
+				            usersForm("email"),
+				            'placeholder -> Messages("Email"),
+				            '_label -> "E-mail",
+				            'class -> "form-control"
+				        )
+				        @inputPassword(
+				            usersForm("inputPassword"),
+				            '_label -> "Mot de passe",
+				            'placeholder -> Messages("Mot de passe"),
+				            'class -> "form-control"
+				        )
+				      <input type="hidden" name="typeUser.id" value="2" />  
+				      <input type="hidden" name="store.id" value="@store.id" />
+				    </fieldset>
+				
+					<div class="hr-line-dashed"></div>
+
+							<div class="button text-center">
+								<button type="submit" class="btn btn-primary btn-lg active">Valider</button>
+							</div>
+						}
+					</div>
+
+
+				</form>
+			  </div>
+			</div>
+		</div>
+	  </div>
+	</div>
+</div>
+
+}

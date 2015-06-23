@@ -33,7 +33,7 @@
 		           
 		            <fieldset>
 			            <tr class= @if(stock.quantity <= stock.threshold_min) {"danger" } else { 
-			          @if(stock.quantity < stock.threshold_min*1.5) { "warning" } else { "success" }
+			          @if(stock.quantity < stock.threshold_min*2) { "warning" } else { "success" }
 			          }>    
 			          
 			          @helper.form(action=routes.OrderCommand.command(stock.store.id), 'class -> "form-horizontal "){
@@ -44,7 +44,7 @@
 			              <td> 
 			        <input type="hidden" name="storesProducts.id" value="@stock.id" />	
 			        <input type="hidden" name="store.id" value="@user.store.id" />	
-			        <input type="hidden" name="status" value="1" />
+			        <input type="hidden" name="status.id" value="1" />
 			        <input type="hidden" name="creationDate" value="@Calendar.getInstance().getTime().format("dd-MM-yyyy")" />	
 					<button class="btn btn-xs btn-danger">Commander</button>
 				 		</td>

@@ -24,12 +24,7 @@ import java.util.UUID;
 
 import static play.data.Form.form;
 
-/**
- * Signup to PlayStartApp : save and send confirm mail.
- * <p/>
- * User: yesnault
- * Date: 31/01/12
- */
+
 public class Signup extends Controller {
 
     /**
@@ -78,6 +73,8 @@ public class Signup extends Controller {
             user.confirmationToken = UUID.randomUUID().toString();
             user.typeUser = register.typeUser;
             user.store = register.store;
+            user.supplier=register.supplier;
+            user.validated = true;
 
             user.save();
             sendMailAskForConfirmation(user);

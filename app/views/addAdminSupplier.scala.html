@@ -1,4 +1,4 @@
-@(user: User, usersForm: Form[models.User])
+@(user: User, usersForm: Form[models.User], supplier : Suppliers)
 
 @import helper._
     @implicitFieldConstructor = @{
@@ -14,12 +14,13 @@
 		  <div class="col-lg-12">
 		    <div class="ibox float-e-margins">
 		      <div class="ibox-title">
-		        <h3>Ajouter un restaurant</h3>
+		        <h3>Ajouter un fournisseur</h3>
 		      </div>
-		      <h3>Admnistrateur</h3>
 		      
 		      @form(action=controllers.account.routes.Signup.save(), 'class -> "form-horizontal "){
 					<div class="ibox-content">
+					
+					<h3>Admnistrateur</h3>
 		
 				    <fieldset>
 				        @inputText(
@@ -46,6 +47,9 @@
 				            'placeholder -> Messages("Mot de passe"),
 				            'class -> "form-control"
 				        )
+				      
+				      <input type="hidden" name="typeUser.id" value="5" />  
+				      <input type="hidden" name="supplier.id" value="@supplier.id" />
 				    </fieldset>
 				
 					<div class="hr-line-dashed"></div>

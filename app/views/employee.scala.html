@@ -23,6 +23,7 @@
 		              <th>Prenom</th>
 		              <th>Mail</th>
 		              <th>Statut</th>
+		              <th>Restautant</th>
 		              <th></th>
 		            </tr>
 		            </thead>
@@ -33,11 +34,9 @@
 			              <td>@User.firstname</td>
 			              <td>@User.email</td>
 			              <td>@User.typeUser.name</td>
-			              <td>
+			              <td>@if(User.typeUser.id == 1){ - } else { @if(User.typeUser.id == 5){@User.supplier.name} else {@User.store.name}} </td>
+			               <td>
 			              @if(User.typeUser.id != 1) {
-			              	<!--a href="#">
-			              	  <button class="btn btn-custom btn-s" title="Modifier"><i class="fa fa-cog"></i></button>
-			              	</a-->
 			              	<a href="@routes.Employee.destroy(User.id)">
                     	  	  <button class="btn btn-custom btn-s" title="Supprimer"><i class="fa fa-trash-o"></i></button>
                     	  	</a>

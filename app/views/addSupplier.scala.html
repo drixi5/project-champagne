@@ -1,6 +1,10 @@
-@import helper._
+@(user: User, suppForm: Form[models.Suppliers], store : models.Suppliers, actionRoute : play.api.mvc.Call)
 
-@(user: User, form: Form[models.Suppliers], store : models.Suppliers, actionRoute : play.api.mvc.Call) 
+@import helper._
+@implicitFieldConstructor = @{
+        FieldConstructor(twitterBootstrapInput.render)
+    }
+ 
 @main(user) {
 
 <div class="wrapper wrapper-content">
@@ -11,87 +15,59 @@
 					<div class="ibox-title">
 						<h3>Ajout d'un fournisseur</h3>
 					</div>
-					@helper.form(action=actionRoute, 'class -> "form-horizontal ") { 
-				<div class="ibox-content">
+					@form(action=actionRoute, 'class -> "form-horizontal ") { 
+					<div class="ibox-content">
 		
-				  @if(form.hasGlobalErrors) {
-				      <p class="error">
-				           @form.globalError.message
-				         Erreur !
-				      </p>
-				  }
-						<fieldset> 
-					  <div class="form-group">
-						
+				  
+					  <fieldset> 
 						@inputText(   
-								form("name"), 
+								suppForm("name"), 
 		    					'_label -> "Nom du fournisseur", 
-		    					'_div_class -> "col-sm-10",
 		   						'class -> "form-control",
 		   						'value -> "store.name",
 		   						'placeholder -> "Name"
 		   						)   
-						</div><br/>	
-						<div class="form-group">
-						
 
 						@inputText(   
-								form("email"), 
+								suppForm("email"), 
 		    					'_label -> "Email", 
-		    					'_div_class -> "col-sm-10",
 		   						'class -> "form-control",
 		   						'value -> "store.email",
 		   						'placeholder -> "Email"
 		   						)   
 						
-					  </div>
-					  <div class="hr-line-dashed"></div>
-					  <div class="form-group">
-					
 						@inputText(   
-								form("adress1"), 
+								suppForm("adress1"), 
 		    					'_label -> "Adresse 1",
 		   						'class -> "form-control",
 		   						'value -> "store.adress1",
 		   						'placeholder -> "Adress 1"
 		   						) 
 						
-					  </div><br/>
-					  <div class="form-group">
-						
 						@inputText(   
-								form("adress2"), 
+								suppForm("adress2"), 
 		    					'_label -> "Adresse 2",
-		    					'_div_class -> "col-sm-10", 
 		   						'class -> "form-control",
 		   						'value -> "store.adress2",
 		   						'placeholder -> "Adress 2"
 		   						) 
 					
-					  </div><br/>
-					  <div class="form-group">
-					
-						<div class="col-sm-6">
 						 @inputText(   
-								form("codePostal"), 
+								suppForm("codePostal"), 
 		    					'_label -> "Code Postal",
 		   						'class -> "form-control",
 		   						'value -> "store.codePostal",
 		   						'placeholder -> "Post Code"
 		   						) 
 
-						</div> 
-						<div class="col-sm-6">
 						 @inputText(   
-								form("ville"), 
+								suppForm("ville"), 
 		    					'_label -> "Ville", 
 		   						'class -> "form-control",
 		   						'value -> "store.ville",
 		   						'placeholder -> "City"
 		   						) 
 						
-						</div> 
-					  </div>
 					  <div class="hr-line-dashed"></div>
 					</fieldset>	
 						<div class="button text-center">

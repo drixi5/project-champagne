@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Suppliers;
 import models.User;
 import models.TypeUser;
 import models.Stores;
@@ -11,7 +12,6 @@ import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-
 import static play.data.Form.form;
 
 /**
@@ -83,12 +83,12 @@ public class Application extends Controller {
             try {
                 user = User.authenticate(email, password);
             } catch (AppException e) {
-                return Messages.get("error.technical");
+                return Messages.get("Erreur technique");
             }
             if (user == null) {
-                return Messages.get("invalid.user.or.password");
+                return Messages.get("Login ou mot de passe invalide");
             } else if (!user.validated) {
-                return Messages.get("account.not.validated.check.mail");
+                return Messages.get("Votre compte n'a pas été validé. Veuillez vérifier vos mails.");
             }
             return null;
         }
@@ -112,6 +112,8 @@ public class Application extends Controller {
         public TypeUser typeUser;
         
         public Stores store;
+        
+        public Suppliers supplier;
 
         /**
          * Validate the authentication.
@@ -120,19 +122,19 @@ public class Application extends Controller {
          */
         public String validate() {
             if (isBlank(email)) {
-                return "Email is required";
+                return "Adresse mail obligatoire";
             }
 
             if (isBlank(lastname)) {
-                return "Last name is required";
+                return "Nom obligatoire";
             }
             
             if (isBlank(firstname)) {
-                return "First name is required";
+                return "Prénom obligatoire";
             }
 
             if (isBlank(inputPassword)) {
-                return "Password is required";
+                return "Mot de passe obligatoire";
             }
 
             return null;
@@ -168,7 +170,7 @@ public class Application extends Controller {
      */
     public static Result logout() {
         session().clear();
-        flash("success", Messages.get("youve.been.logged.out"));
+        flash("success", Messages.get("Vous avez été déconnecté"));
         return GO_HOME;
     }
 
