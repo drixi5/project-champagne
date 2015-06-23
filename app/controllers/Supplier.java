@@ -4,11 +4,12 @@ import static play.data.Form.form;
 import models.Stores;
 import models.Suppliers;
 import models.User;
+import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.addAdmin;
+import views.html.addAdminSupplier;
 import views.html.addStore;
 import views.html.editStore;
 import views.html.supplier;
@@ -42,9 +43,19 @@ public class Supplier extends Controller {
 		 { 
 			 Suppliers supplier= form.get();
 			 supplier.save();
-			 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
+			 Logger.debug(supplier.id+ "supplier");
+			 return addAdminSupplier(supplier.id);
 		 }
 	}
+	
+	 public static Result addAdminSupplier(Long id) {
+         Suppliers lastSupplierAdded = Suppliers.find.byId(id);
+         Logger.debug(lastSupplierAdded.id+ "supplier");
+         return ok(addAdminSupplier.render(User.findByEmail(request().username()), usersForm, lastSupplierAdded));
+     
+}
+	
+	
 		 public static Result edit(Long id)  {
 		        Suppliers supplier = Suppliers.find.byId(id);
 		        

@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Suppliers;
 import models.User;
 import models.TypeUser;
 import models.Stores;
@@ -11,7 +12,6 @@ import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-
 import static play.data.Form.form;
 
 /**
@@ -112,6 +112,8 @@ public class Application extends Controller {
         public TypeUser typeUser;
         
         public Stores store;
+        
+        public Suppliers supplier;
 
         /**
          * Validate the authentication.

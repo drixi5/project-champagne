@@ -21,7 +21,9 @@ import static play.data.Form.form;
 public class Employee extends Controller {
 	
 	public static Result index() {
-        return ok(employee.render(User.findByEmail(request().username()), User.find.orderBy("id asc").findList()));
+		
+			return ok(employee.render(User.findByEmail(request().username()), User.find.orderBy("id asc").findList()));
+        
     }
 	
 	final static Form<User> usersForm = form(User.class);

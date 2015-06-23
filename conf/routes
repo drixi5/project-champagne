@@ -42,7 +42,8 @@ GET     /email/:token               controllers.account.settings.Email.validateE
 # Stores
 GET     /store                  	controllers.Store.index()
 GET     /store/addStore             controllers.Store.viewAddStore()
-POST    /store						controllers.Store.addStore()
+POST    /addAdminStore				controllers.Store.addStore()
+GET		/addAdminStore				controllers.Store.addAdminStore( id : Long)
 GET     /store/:id/edit   			controllers.Store.edit(id: Long)
 POST    /store/:id        			controllers.Store.update(id: Long)
 GET    /store/:id		  			controllers.Store.destroy(id: Long)
@@ -52,10 +53,12 @@ GET    /store/:id		  			controllers.Store.destroy(id: Long)
 
 # Supplier
 GET     /supplier                  	controllers.Supplier.index()
-GET		/supplier/addSupplier		controllers.Supplier.addSupplier()
+GET		/supplier/addSupplier		controllers.Supplier.viewAddSupplier()
+POST	/addAdminSupplier			controllers.Supplier.addSupplier()
+GET		/addAdminSupplier			controllers.Supplier.addAdminSupplier( id : Long)
 GET     /supplier/:id/edit   		controllers.Supplier.edit(id: Long)
 POST    /supplier/:id        		controllers.Supplier.update(id: Long)
-GET  /supplier/:id		  			controllers.Supplier.destroy(id: Long)
+GET    /supplier/:id		  	    controllers.Supplier.destroy(id: Long)
 
 # Orders
 GET     /ordersProgress/            		controllers.OrderCommand.orderInProgress(id : Long)

@@ -17,7 +17,7 @@ import play.mvc.*;
 import play.data.Form;
 import views.html.store;
 import views.html.addStore;
-import views.html.addAdmin;
+import views.html.addAdminStore;
 import views.html.editStore;
 import views.html.account.signup.create;
 import views.html.account.signup.created;
@@ -41,11 +41,6 @@ public class Store extends Controller {
 	 }
 	 	 
 	 
-	 public static Result addAdmin() {
-		            
-		            return index();
-		        
-	 }
 	 
 	 
 	 public static Result addStore(){
@@ -59,17 +54,16 @@ public class Store extends Controller {
 		 { 
 			 Stores store= form.get();
 			 store.save();
-			 return ok(addAdmin.render(User.findByEmail(request().username()), usersForm));
+			 return addAdminStore(store.id);
 			 
 		 }
 	 } 	 
 		 
-/* A voir avec Xav au niveau du model.user ! 	 
-	 public static Result addAdmin(){
-		 User admin = Form.form(User.class).bindFromRequest().get();
-   	  	 admin.save();
-   	     return index();
-	 }*/
+	 public static Result addAdminStore(Long id) {
+         Stores lastStoreAdded = Stores.find.byId(id);
+         return ok(addAdminStore.render(User.findByEmail(request().username()), usersForm, lastStoreAdded));
+     
+}
 	 
 	 public static Result edit(Long id)  {
 	        Stores store = Stores.find.byId(id);
